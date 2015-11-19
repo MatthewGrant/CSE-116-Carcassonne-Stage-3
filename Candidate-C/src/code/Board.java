@@ -287,4 +287,8 @@ public class Board {
 	public int getHash(String s){
 		return _meeple.get(s);
 	}
+	public TileTypes getTileStack() {
+		// TODO Auto-generated method stub
+		return _tileTypes;
+	}
 }

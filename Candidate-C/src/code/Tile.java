@@ -13,6 +13,7 @@ public class Tile {
 	 * The place on which a follower is located on a tile
 	 */
 	private int _followerSpot;
+	
 	/**
 	 * The four arrays of three strings that represent the sides
 	 */
@@ -21,6 +22,8 @@ public class Tile {
 	private String[] _side3;
 	private String[] _side4;
 	private String _id;
+	private int _rotation = 0;
+	
 	/**
 	 * The feature that is located at the center of the tile, could be "cloister", "road end", "city", "road", or "field" 
 	 */
@@ -64,7 +67,10 @@ public class Tile {
 		_sides = new String[][] {_side1, _side2, _side3, _side4};
 		_followerSpot = 9;
 		_id = id;
+		
 	}
+	
+	
 	/**
 	 * The constructor initializes all of the instance variables to values that are specified when a tile is created
 	 * 
@@ -99,6 +105,13 @@ public class Tile {
 	 * @param i		The number of times the tile should be rotated by 90 degrees
 	 */
 	public void rotate(int i) {
+		
+		if (_rotation == 3){
+			_rotation = 0;
+		}
+		else {
+			_rotation += 1;
+		}
 		
 		String[][] temp = new String[4][3];
 		for(int j=0; j<i%4; j++) {
@@ -147,4 +160,21 @@ public class Tile {
 		_followerSpot = f;
 		return _followerSpot;
 	}
+	
+	 
+	public int getRotationIndex() {
+		return _rotation;
+	}
+	
+	
+	public void setrotationIndex(int _rotation) {
+		this._rotation = _rotation;
+	}
+
+
+	public String getId() {
+		return _id;
+	}
+	
+	
 }
