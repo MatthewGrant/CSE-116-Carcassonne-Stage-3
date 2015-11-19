@@ -33,7 +33,7 @@ public class TileTypes {
 	 * refers to a follower placement.
 	 */
 	public void createTiles() {
-		for (int type = 1; type<25; type++) {
+		for (int type = 1; type<34; type++) {
 			if (type == 1) {
 				for (int i=0; i<5; i++) {
 					//top left bottom right
