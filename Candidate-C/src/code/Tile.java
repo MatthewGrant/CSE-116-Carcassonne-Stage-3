@@ -20,6 +20,7 @@ public class Tile {
 	private String[] _side2;
 	private String[] _side3;
 	private String[] _side4;
+	private String _id;
 	/**
 	 * The feature that is located at the center of the tile, could be "cloister", "road end", "city", "road", or "field" 
 	 */
@@ -49,6 +50,33 @@ public class Tile {
 	 * @param img	The ImageIcon of the tile
 	 * @param f		The int that describes the location of a follower. It is initialized to 9 because that is not a valid follower position
 	 */
+	public Tile(String[] a,String[] b,String[] c,String[] d, String inside, boolean s, ImageIcon img, int f,String id) {
+		
+		//this puts the four String arrays in the correct configuration on a Tile
+		//this also puts the String (the extra feature) onto the Tile configuration 
+		_side1 = a;
+		_side2 = b;
+		_side3 = c;
+		_side4 = d;	
+		_inside = inside;
+		_shield = s;
+		_image = img;
+		_sides = new String[][] {_side1, _side2, _side3, _side4};
+		_followerSpot = 9;
+		_id = id;
+	}
+	/**
+	 * The constructor initializes all of the instance variables to values that are specified when a tile is created
+	 * 
+	 * @param a		Array of strings that represent the top side of the tile
+	 * @param b		Array of strings that represent the right side of the tile 
+	 * @param c		Array of strings that represent the bottom side of the tile
+	 * @param d		Array of strings that represent the left side of the tile
+	 * @param inside	A String that describes what feature is in the middle of the tile
+	 * @param s		A boolean that is true if the tile has a shield and is false if it does not
+	 * @param img	The ImageIcon of the tile
+	 * @param f		The int that describes the location of a follower. It is initialized to 9 because that is not a valid follower position
+	 */
 	public Tile(String[] a,String[] b,String[] c,String[] d, String inside, boolean s, ImageIcon img, int f) {
 		
 		//this puts the four String arrays in the correct configuration on a Tile
@@ -62,8 +90,8 @@ public class Tile {
 		_image = img;
 		_sides = new String[][] {_side1, _side2, _side3, _side4};
 		_followerSpot = 9;
+		
 	}
-	
 	/**
 	 * This method takes in an int i which determines the number of times that a tile is rotated. It maintains the configuration where the top of
 	 * the tile is side 1, the right side is side 2, the bottom is side 3, and the left side is side 4.
