@@ -17,14 +17,21 @@ public class TileTypes {
 	 * ArrayList named _tileList which will hold all of the tiles that need to be created for gameplay
 	 */
 	private ArrayList<Tile> _tileList;
+
+	
+	
+	private ArrayList<Tile> _riverTileList; 
+	
 	
 	/**
 	 * Constructor initializes the _tileList as a new ArrayList<Tile>
 	 */
 	public TileTypes() {
 		_tileList = new ArrayList<Tile>();
+		_riverTileList = new ArrayList<Tile>();
 	}
-
+	
+	
 	/**
 	 * Method which creates all of the tiles in the _tileList at the start of the game. Runs a for loop
 	 * which works through each tile type based on a number from 1-24. Each type number is taken into an
@@ -34,7 +41,7 @@ public class TileTypes {
 	 */
 	//the idse are wrong
 	public void createTiles() {
-		for (int type = 1; type<34; type++) {
+		for (int type = 1; type<24; type++) {
 			if (type == 1) {
 				for (int i=0; i<5; i++) {
 					//top left bottom right
@@ -331,118 +338,125 @@ public class TileTypes {
 				}
 			}
 			
-			
-			/////////// river tiles
-			if (type == 25) {
-				for (int i=0; i<2; i++) {
-					String[] s0 = {"field", "field","field"};
-					String[] s1 = {"field", "field","field"};
-					String[] s2 = {"field", "river","field"};
-					String[] s3 = {"field", "field","field"};
-					String inside = "river end";
-					ImageIcon img = new ImageIcon(getClass().getResource("/resources/25.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RA");
-					_tileList.add(t);
-				}
 			}
-			if (type == 26) {
-				for (int i=0; i<2; i++) {
-					String[] s0 = {"field", "river","field"};
-					String[] s1 = {"field", "field","field"};
-					String[] s2 = {"field", "river","field"};
-					String[] s3 = {"field", "field","field"};
-					String inside = "river";
-					ImageIcon img = new ImageIcon(getClass().getResource("/resources/26.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RB");
-					_tileList.add(t);
-				}
-			}
-			if (type == 27) {
-				for (int i=0; i<1; i++) {
-					String[] s0 = {"field", "river","field"};
-					String[] s1 = {"field", "river","field"};
-					String[] s2 = {"field", "field","field"};
-					String[] s3 = {"field", "field","field"};
-					String inside = "river";
-					ImageIcon img = new ImageIcon(getClass().getResource("/resources/27.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RC");
-					_tileList.add(t);
-				}
-			}
-			if (type == 28) {
-				for (int i=0; i<1; i++) {
-					String[] s0 = {"field", "field","field"};
-					String[] s1 = {"field", "river","field"};
-					String[] s2 = {"field", "road","field"};
-					String[] s3 = {"field", "river","field"};
-					String inside = "cloister";
-					ImageIcon img = new ImageIcon(getClass().getResource("/resources/28.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RD");
-					_tileList.add(t);
-				}
-			}
-			if (type == 29) {
-				for (int i=0; i<1; i++) {
-					String[] s0 = {"field", "river","field"};
-					String[] s1 = {"field", "river","field"};
-					String[] s2 = {"city", "city","city"};
-					String[] s3 = {"city", "city","city"};
-					String inside = "field";
-					ImageIcon img = new ImageIcon(getClass().getResource("/resources/29.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RE");
-					_tileList.add(t);
-				}
-			}
-			if (type == 30) {
-				for (int i=0; i<1; i++) {
-					String[] s0 = {"field", "road","field"};
-					String[] s1 = {"field", "river","field"};
-					String[] s2 = {"field", "road","field"};
-					String[] s3 = {"field", "river","field"};
-					String inside = "road";
-					ImageIcon img = new ImageIcon(getClass().getResource("/resources/30.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RF");
-					_tileList.add(t);
-				}
-			}
-			if (type == 31) {
-				for (int i=0; i<1; i++) {
-					String[] s0 = {"field", "river","field"};
-					String[] s1 = {"city", "city","city"};
-					String[] s2 = {"field", "river","field"};
-					String[] s3 = {"city", "city","city"};
-					String inside = "river";
-					ImageIcon img = new ImageIcon(getClass().getResource("/resources/31.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RG");
-					_tileList.add(t);
-				}
-			}
-			if (type == 32) {
-				for (int i=0; i<1; i++) {
-					String[] s0 = {"field", "river","field"};
-					String[] s1 = {"field", "river","field"};
-					String[] s2 = {"field", "road","field"};
-					String[] s3 = {"field", "road","field"};
-					String inside = "field";
-					ImageIcon img = new ImageIcon(getClass().getResource("/resources/32.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RH");
-					_tileList.add(t);
-				}
-			}
-			if (type == 33) {
-				for (int i=0; i<1; i++) {
-					String[] s0 = {"field", "river","field"};
-					String[] s1 = {"field", "road","field"};
-					String[] s2 = {"field", "river","field"};
-					String[] s3 = {"city", "city","city"};
-					String inside = "end road";
-					ImageIcon img = new ImageIcon(getClass().getResource("/resources/33.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RI");
-					_tileList.add(t);
-				}
-			}
-			
+				
 		}
+
+		// create river tiles
+	public void createRiverTiles() {
+		for (int type = 1; type<10; type++) {
+				if (type == 1) {
+					for (int i=0; i<2; i++) {
+						String[] s0 = {"field", "river","field"};
+						String[] s1 = {"field", "field","field"};
+						String[] s2 = {"field", "river","field"};
+						String[] s3 = {"field", "field","field"};
+						String inside = "river";
+						ImageIcon img = new ImageIcon(getClass().getResource("/resources/26.png"));
+						Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RB");
+						_riverTileList.add(t);
+					}
+				}
+				if (type == 2) {
+					for (int i=0; i<2; i++) {
+						String[] s0 = {"field", "river","field"};
+						String[] s1 = {"field", "river","field"};
+						String[] s2 = {"field", "field","field"};
+						String[] s3 = {"field", "field","field"};
+						String inside = "river";
+						ImageIcon img = new ImageIcon(getClass().getResource("/resources/27.png"));
+						Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RC");
+						_riverTileList.add(t);
+					}
+				}
+				if (type == 3) {
+					for (int i=0; i<1; i++) {
+						String[] s0 = {"field", "field","field"};
+						String[] s1 = {"field", "river","field"};
+						String[] s2 = {"field", "road","field"};
+						String[] s3 = {"field", "river","field"};
+						String inside = "cloister";
+						ImageIcon img = new ImageIcon(getClass().getResource("/resources/28.png"));
+						Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RD");
+						_riverTileList.add(t);
+					}
+				}
+				if (type == 4) {
+					for (int i=0; i<1; i++) {
+						String[] s0 = {"field", "river","field"};
+						String[] s1 = {"field", "river","field"};
+						String[] s2 = {"city", "city","city"};
+						String[] s3 = {"city", "city","city"};
+						String inside = "field";
+						ImageIcon img = new ImageIcon(getClass().getResource("/resources/29.png"));
+						Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RE");
+						_riverTileList.add(t);
+					}
+				}
+				if (type == 5) {
+					for (int i=0; i<1; i++) {
+						String[] s0 = {"field", "road","field"};
+						String[] s1 = {"field", "river","field"};
+						String[] s2 = {"field", "road","field"};
+						String[] s3 = {"field", "river","field"};
+						String inside = "road";
+						ImageIcon img = new ImageIcon(getClass().getResource("/resources/30.png"));
+						Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RF");
+						_riverTileList.add(t);
+					}
+				}
+				if (type == 6) {
+					for (int i=0; i<1; i++) {
+						String[] s0 = {"field", "river","field"};
+						String[] s1 = {"city", "city","city"};
+						String[] s2 = {"field", "river","field"};
+						String[] s3 = {"city", "city","city"};
+						String inside = "river";
+						ImageIcon img = new ImageIcon(getClass().getResource("/resources/31.png"));
+						Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RG");
+						_riverTileList.add(t);
+					}
+				}
+				if (type == 7) {
+					for (int i=0; i<1; i++) {
+						String[] s0 = {"field", "river","field"};
+						String[] s1 = {"field", "river","field"};
+						String[] s2 = {"field", "road","field"};
+						String[] s3 = {"field", "road","field"};
+						String inside = "field";
+						ImageIcon img = new ImageIcon(getClass().getResource("/resources/32.png"));
+						Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RH");
+						_riverTileList.add(t);
+					}
+				}
+				if (type == 8) {
+					for (int i=0; i<1; i++) {
+						String[] s0 = {"field", "river","field"};
+						String[] s1 = {"field", "road","field"};
+						String[] s2 = {"field", "river","field"};
+						String[] s3 = {"city", "city","city"};
+						String inside = "end road";
+						ImageIcon img = new ImageIcon(getClass().getResource("/resources/33.png"));
+						Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RI");
+						_riverTileList.add(t);
+					}
+				}
+				//added "river end" tile to end of list 
+				if (type == 9) {
+					// Add just one because the first will be created in the board class
+					for (int i=0; i<1; i++) {
+						String[] s0 = {"field", "field","field"};
+						String[] s1 = {"field", "field","field"};
+						String[] s2 = {"field", "river","field"};
+						String[] s3 = {"field", "field","field"};
+						String inside = "river end";
+						ImageIcon img = new ImageIcon(getClass().getResource("/resources/25.png"));
+						Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 9,"RA");
+						_riverTileList.add(t);
+					}
+				}
+		}
+			
 	}
 	
 	/**
@@ -452,5 +466,11 @@ public class TileTypes {
 	 */
 	public ArrayList<Tile> getTileList() {
 		return _tileList;
-	}		
+	}
+	
+	public ArrayList<Tile> getRiverTileList(){
+		return _riverTileList;
+	}
+	
+	
 }

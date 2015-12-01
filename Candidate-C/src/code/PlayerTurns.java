@@ -53,6 +53,54 @@ public class PlayerTurns implements Runnable{
 	public void run(){
 		int state = 0; //initializes the state to 0
 		int i = 0; //int used to determine the player for the turn
+		
+		// River Tile Deck play seq
+		while(_board.getRiverTileList()>0) {
+			switch(state) {
+			case 0:
+				//gets the player name and places it on the view
+				_p = i%_players.size();
+				String player = _players.get(_p);
+				i++; //increments the player number
+				_view.updateTurn(player);
+				
+				//displays the tile which the player can place
+				_view.nextRiverTile();
+				state = 1;
+				break;
+			case 1:
+				//does not move on until a tile is placed legally in the board
+				if(!_board.tilePlaced()){
+					state = 1;
+				}else{
+					state = 2;
+				}
+				break;
+			case 2:
+				//checks that the player has at least 1 follower, if not returns to case 0
+				//asks user if they want to place a follower on the board
+				//'yes' --> the state changes so follower code can run
+				//'no' --> returns to case 0 for next turn
+				if(_board.getHash(_players.get(_p)) > 0){
+					if (JOptionPane.showConfirmDialog(null, "Would you like to place a follower?") == 0){
+						state = 3;
+					} else {
+						state = 0;
+					}
+				}else{
+					state = 0;
+				}
+					break;
+			case 3:
+				//shows player where they can place follower and waits for JButton click
+				_view.followerFrame();
+				_board.placeFollower(_p);
+				state = 0;
+				break;
+			}
+		}
+		
+		// Core Tile play 
 		while(_board.getTileList()>=0) {
 			switch(state) {
 			case 0:

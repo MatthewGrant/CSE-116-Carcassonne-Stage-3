@@ -130,7 +130,7 @@ public class View {
 				a.setPreferredSize(new Dimension(80,80));
 				a.addActionListener(_event);
 				if((i==1) && (j==1)){
-					ImageIcon img = new ImageIcon(getClass().getResource("/resources/11.png"));
+					ImageIcon img = new ImageIcon(getClass().getResource("/resources/25.png"));
 					a.setIcon(img);
 				}
 				_gameplay.add(a);
@@ -142,7 +142,7 @@ public class View {
 		BorderLayout border = new BorderLayout();
 		border.setHgap(20);
 		_turn.setLayout(border);
-		_newTile = _board.pickTile();
+		_newTile = _board.pickRiverTile();
 		_image = _newTile.getImage();
 		_nextTileButton = new JButton(_image);
 		_nextTileButton.setPreferredSize(new Dimension(80,80));
@@ -438,6 +438,14 @@ public class View {
 	 */
 	public void nextTile() {
 		_newTile = _board.pickTile();
+		_image = _newTile.getImage();
+		_nextTileButton.setIcon(_image);
+		_window.pack();
+	}
+	
+	// added for river tiles
+	public void nextRiverTile() {
+		_newTile = _board.pickRiverTile();
 		_image = _newTile.getImage();
 		_nextTileButton.setIcon(_image);
 		_window.pack();

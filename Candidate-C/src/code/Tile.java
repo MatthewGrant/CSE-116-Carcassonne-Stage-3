@@ -156,10 +156,12 @@ public class Tile {
 	 * @param f		The int representing the position of the follower
 	 * @return		The int representing the position of the follower
 	 */
+	// getter and setter, break into 2 separate methods 
 	public int getFollower(int f){
 		_followerSpot = f;
 		return _followerSpot;
 	}
+	
 	
 	 
 	public int getRotationIndex() {
