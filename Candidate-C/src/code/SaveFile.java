@@ -19,10 +19,10 @@ public class SaveFile {
 			{
 				out = new BufferedWriter(new FileWriter("SaveFile.csn"));
 				//line1 [player,color,score]
-				for(int i =0;i<_board.getPlayerNames().size();i++)
+				for(int i =0;i<_board.getPlayers().size();i++)
 				{
-					out.write(_board.getPlayerNames().get(i));
-					if(i<_board.getPlayerNames().size()-1)
+					out.write(_board.getPlayers().get(i));
+					if(i<_board.getPlayers().size()-1)
 					{
 						out.write(",");
 					}

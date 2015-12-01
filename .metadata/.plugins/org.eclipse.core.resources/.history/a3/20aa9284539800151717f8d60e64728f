@@ -221,12 +221,7 @@ public class Board {
 		return tile;	
 	}
 	
-	 
-	/**
-	 * This method takes the Arraylist<Tile> that holds all 11 river tiles used during the game play and shuffles them so that a random tile is pulled each time this method is called. 
-	 * 
-	 * @return Returns the river tile that is displayed to the user as the tile which can be placed
-	 */
+	//pick river tiles 
 	public Tile pickRiverTile(){
 		
 		//create river tile array list
@@ -279,10 +274,7 @@ public class Board {
 	}
 	
 	
-
-	/**
-	 * @return Returns the size of the ArrayList of Tiles from the TileTypes Class as an int
-	 */
+	//Added for river tiles 
 	public int getRiverTileList(){
 		return _tileTypes.getRiverTileList().size();
 	}
@@ -313,7 +305,7 @@ public class Board {
 	 * @param i		Takes in an int that represents a follower position on a Tile
 	 */
 	public void followerOnTile(int i){
-		_tile.setFollowerSpot(i);
+		_tile.getFollower(i);
 	}
 	
 	/**
@@ -340,9 +332,6 @@ public class Board {
 		return _tileTypes;
 	}
 	
-	/**
-	 * @return Returns the tile that was just placed
-	 */
 	public Tile getTile() {
 		return _tile;
 	}

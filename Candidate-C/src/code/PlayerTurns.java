@@ -27,8 +27,10 @@ public class PlayerTurns implements Runnable{
 	/**
 	 * Used inside of the state machine to reference the player whose turn is currently happening
 	 */
-	private int _p;
+	private static int _p;
 	
+	
+
 	/**
 	 * PlayerTurns constructor which initializes the instance variables and passes in a reference to
 	 * the ArrayList<String> from the Driver.
@@ -60,7 +62,9 @@ public class PlayerTurns implements Runnable{
 			case 0:
 				//gets the player name and places it on the view
 				_p = i%_players.size();
+				System.out.print(_p);
 				String player = _players.get(_p);
+				System.out.print(player);
 				i++; //increments the player number
 				_view.updateTurn(player);
 				
@@ -148,5 +152,10 @@ public class PlayerTurns implements Runnable{
 		
 		//once the while exits after all tiles placed gameOver() tells the player game is done
 		_view.gameOver();
+	}
+	
+	public static int getPlayerID() {
+		// 3 players, 0,1,2
+		return _p;
 	}
 }

@@ -58,7 +58,6 @@ public class Board {
 	 */
 	private Tile _tile;
 	
-	
 	/**
 	 * The constructor of the Board class creates a 2D tile array of size [144][144], which is the maximum size the board may get if all of the tiles were 
 	 * placed in one line. Whenever the board is initialized at the start of a new game the starting tile is placed automatically in the center of the board. 
@@ -221,12 +220,7 @@ public class Board {
 		return tile;	
 	}
 	
-	 
-	/**
-	 * This method takes the Arraylist<Tile> that holds all 11 river tiles used during the game play and shuffles them so that a random tile is pulled each time this method is called. 
-	 * 
-	 * @return Returns the river tile that is displayed to the user as the tile which can be placed
-	 */
+	//pick river tiles 
 	public Tile pickRiverTile(){
 		
 		//create river tile array list
@@ -238,19 +232,19 @@ public class Board {
 		//create and set "last" tile as the "river end" tile which is in position size-1 of the original arrayList in tileTypes class
 		Tile last = riverTileList.get(size-1);
 		
-		//remove last element from array list "river end" tile 
+		//remove last element from array list
 		riverTileList.remove(size-1);
 		
-		//shuffle list "river Deck" 
+		//shuffle list
 		Collections.shuffle(riverTileList);
 		
-		//add "river end" tile back to the deck
+		//add "river end" tile back to the list 
 		riverTileList.add(last);
 		
 		// temp tile "tile" is first element in the list 
 		Tile tile = riverTileList.get(0);
 		
-		// removes tile from river deck 
+		// 
 		riverTileList.remove(0);
 		return tile;	
 	
@@ -279,10 +273,7 @@ public class Board {
 	}
 	
 	
-
-	/**
-	 * @return Returns the size of the ArrayList of Tiles from the TileTypes Class as an int
-	 */
+	//Added for river tiles 
 	public int getRiverTileList(){
 		return _tileTypes.getRiverTileList().size();
 	}
@@ -313,7 +304,7 @@ public class Board {
 	 * @param i		Takes in an int that represents a follower position on a Tile
 	 */
 	public void followerOnTile(int i){
-		_tile.setFollowerSpot(i);
+		_tile.getFollower(i);
 	}
 	
 	/**
@@ -334,16 +325,8 @@ public class Board {
 	public int getHash(String s){
 		return _meeple.get(s);
 	}
-	
 	public TileTypes getTileStack() {
 		// TODO Auto-generated method stub
 		return _tileTypes;
-	}
-	
-	/**
-	 * @return Returns the tile that was just placed
-	 */
-	public Tile getTile() {
-		return _tile;
 	}
 }

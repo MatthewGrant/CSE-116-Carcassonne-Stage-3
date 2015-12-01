@@ -2,14 +2,12 @@ package code;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Transparency;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,9 +33,7 @@ public class PlaceFollower implements ActionListener {
 	private JButton _button;
 	private JFrame _frame;
 	private Board _board;
-	//private Color _color; //?? need to give a COLOR to each player , need to get turn number 
-	private int _meeplePosition; //need to get/set Meeple (x,y) coords for image tile 
-	
+	private Color _color; 
 	
 	
 
@@ -68,68 +64,48 @@ public class PlaceFollower implements ActionListener {
 		_board.followerOnTile(i);
 		
 		// 1. get imageIcon of tile 
-		 //ImageIcon img = _board.getTile().getImage(); 
-		 ImageIcon img = (ImageIcon) _button.getIcon();
+		// ImageIcon img = _board.getTile().getImage(); 
 		// 2. create buffered image from imageIcon
-		BufferedImage buffFollower = new BufferedImage(img.getIconWidth(),img.getIconHeight(),BufferedImage.TYPE_INT_RGB); 
+		// BufferedImage buffFollower = new BufferedImage(img.getIconWidth(),img.getIconHeight(), Transparency.BITMASK);
 		// 3. create graphics 2D object 
-		Graphics g = buffFollower.createGraphics();
-		img.paintIcon(null, g, 0, 0);
-		g.dispose();
-		 Graphics2D buffGraphics = (Graphics2D) buffFollower.createGraphics();
-		// 4. set color of 2D graphics (each player to have a color) 
-		
-		 buffGraphics.setColor(getColor());
-		// 5. fillRect (Pixel location of meeple(x,y), size of rect) This will modify the buffered image
-		buffGraphics.fillRect(position(i)[0], position(i)[1], 8, 8);
-		buffGraphics.dispose();
+		// Graphics2D g = (Graphics2D) buffFollower.getGraphics();
+		// 4. set color of 2D graphics (need each player to have a color c) 
+		// g.setColor(_color);
+		// 5. fillrect (getlocationofmeeple(x,y), size) This will modify the buffered image
+		// g.fillRect(x, y, width, height);
 		// 6. create new imageicon(buffered image) 
-		ImageIcon meepleImage = new ImageIcon(buffFollower);
+		//
 		// 7. set image of Jbutton with new imageIcon 
-		_button.setIcon(meepleImage);
-		_board.getTile().setImage(meepleImage);
+		// view.update()
+		
+		/*ImageIcon img = new ImageIcon(getClass().getResource("/resources/follower"+i+".png"));
+		BufferedImage buffFollower = new BufferedImage(img.getIconWidth(),img.getIconHeight(), Transparency.BITMASK);
+		Graphics2D g = (Graphics2D) buffFollower.getGraphics();
+		g.setComposite(AlphaComposite.Src);
+		g.drawImage(buffFollower, 0, 0, null);
+		g.dispose();
+		ImageIcon tile = (ImageIcon) _button.getIcon();
+		BufferedImage buffTile = new BufferedImage(tile.getIconWidth(), tile.getIconHeight(), Transparency.BITMASK);
+		g = (Graphics2D) buffTile.getGraphics();
+		g.setComposite(AlphaComposite.Src);
+		g.drawImage(buffTile, 0, 0, null);
+		g.dispose();
+		BufferedImage buffImage = new BufferedImage(tile.getIconWidth(), tile.getIconHeight(), Transparency.BITMASK);
+		g = (Graphics2D) buffImage.getGraphics();
+		g.setComposite(AlphaComposite.Src);
+		g.drawImage(buffTile, 0, 0, null);
+		g.drawImage(buffFollower, 0, 0, null);
+		g.dispose();
+		ImageIcon image = new ImageIcon(buffImage);
+		_button.setIcon(image);*/
 		_frame.setVisible(false);
 	}
 	
-	
-	//create method to get xcoord,ycoord from arrayList 
-	// i corresponds to follower position and the coord in array
-	/**
-	 * @param i , follower position from 0 to 12
-	 * @return Returns an array of x and y coordinate pair corresponding the the meeple position in terms of pixels on the tile. 
-	 */
-	public int[] position(int i){
-	int xcoord = View.meeplePosition[i][0];
-	int ycoord = View.meeplePosition[i][1];
-	int[] position = {xcoord,ycoord};
-	return position;
-	
+	public Color get_color() {
+		return _color;
 	}
-	
-	
-	/**
-	 * @return Returns the color of the current player for meeple placement. 
-	 */
-	public Color getColor() {
-		int p = PlayerTurns.getPlayerID(); 
-				if(p == 0){
-					return Color.BLUE;
-				}
-				if (p == 1){
-					return Color.RED;
-				}
-				if (p == 2){
-					return Color.green;
-				}
-				if (p == 3) {
-					return Color.YELLOW;
-				}
-				else  {
-					return Color.BLACK;
-				}
-				
+
+	public void set_color(Color _color) {
+		this._color = _color;
 	}
- 
-	
-	
 }

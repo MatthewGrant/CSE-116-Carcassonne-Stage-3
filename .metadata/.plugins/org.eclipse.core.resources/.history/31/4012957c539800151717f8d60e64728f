@@ -471,17 +471,17 @@ public class View {
 		JFrame frame = new JFrame("Follower Placement");
 		frame.setLocationRelativeTo(null);
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(5,3));
+		panel.setLayout(new GridLayout(3,3));
 		PlaceFollower handler = new PlaceFollower(this, _button, frame, _board);
 		_followerList = new ArrayList<JButton>();
-		for(int i = 0; i < 13; i++){ //update to handle more Jbuttons 
+		for(int i = 0; i < 9; i++){
 			JButton b = new JButton();
 			b.addActionListener(handler);
 			_followerList.add(b);
-			String[] s1 = _oldTile.accessSides(1); 
-			String[] s2 = _oldTile.accessSides(2); 
-			String[] s3 = _oldTile.accessSides(3); 
-			String[] s4 = _oldTile.accessSides(4); 
+			String[] s1 = _oldTile.accessSides(1);
+			String[] s2 = _oldTile.accessSides(2);
+			String[] s3 = _oldTile.accessSides(3);
+			String[] s4 = _oldTile.accessSides(4);
 			if(i==0){
 				if(!(s1[0].equals(s4[2]))){
 					b.setText("field");
@@ -500,16 +500,16 @@ public class View {
 				}
 			}
 			if(i==3){
-				b.setText(s2[0]);
+				b.setText(s4[1]);
 			}
 			if(i==4){
-				b.setText(s2[1]);
+				b.setText(_oldTile.accessCenter());
 			}
 			if(i==5){
-				b.setText(s2[2]);
+				b.setText(s2[1]);
 			}
 			if(i==6){
-				if(!(s3[2].equals(s2[2]))){
+				if(!(s3[2].equals(s4[0]))){
 					b.setText("field");
 				}else{
 					b.setText(s3[2]);
@@ -519,33 +519,12 @@ public class View {
 				b.setText(s3[1]);
 			}
 			if(i==8){
-				if(!(s4[2].equals(s3[0]))){
+				if(!(s2[2].equals(s3[0]))){
 					b.setText("field");
 				}else{
-					b.setText(s3[0]);
+					b.setText(s2[2]);
 				}
 			}
-			if(i==9){
-				if(!(s3[0].equals(s4[2]))){
-					b.setText("field");
-				}else{
-					b.setText(s4[2]);
-				}
-			}
-			if(i==10){
-				b.setText(s4[1]);
-			}
-			if(i==11){
-				if(!(s4[0].equals(s1[0]))){
-					b.setText("field");
-				}else{
-					b.setText(s4[0]);
-				}
-			}
-			if(i==12){
-				b.setText(_oldTile.accessCenter());
-			}
-			
 			panel.add(b);
 		}
 		frame.add(panel);
@@ -562,22 +541,6 @@ public class View {
 	public int getFollowerPosition(JButton b){
 		return _followerList.indexOf(b);
 	}
-	
-	// Array of pixel coordinates of meeple positions on tile image
-	 static int[][] meeplePosition = {{23,3}, // 0
-									{39,3}, // 1
-									{55,3}, // 2
-									{73,23}, // 3
-									{73,38}, // 4
-									{73,54}, // 5
-									{55,73}, // 6 
-									{39,73}, // 7 
-									{23,73}, // 8 
-									{3,54}, // 9
-									{3,38}, // 10
-									{3,23}, // 11
-									{39,39}}; // 12 (center)
-	
 	
 	/**
 	 * This method returns the tile that can be placed next.

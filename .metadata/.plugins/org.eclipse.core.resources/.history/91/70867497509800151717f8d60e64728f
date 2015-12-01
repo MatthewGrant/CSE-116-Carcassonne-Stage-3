@@ -39,7 +39,7 @@ public class Tile {
 	/**
 	 * The image of the tile
 	 */
-	private ImageIcon _image; 
+	private ImageIcon _image;
 	
 	/**
 	 * The constructor initializes all of the instance variables to values that are specified when a tile is created
@@ -65,7 +65,7 @@ public class Tile {
 		_shield = s;
 		_image = img;
 		_sides = new String[][] {_side1, _side2, _side3, _side4};
-		_followerSpot = 13;
+		_followerSpot = 9;
 		_id = id;
 		
 	}
@@ -95,7 +95,7 @@ public class Tile {
 		_shield = s;
 		_image = img;
 		_sides = new String[][] {_side1, _side2, _side3, _side4};
-		_followerSpot = 13;
+		_followerSpot = 9;
 		
 	}
 	/**
@@ -150,11 +150,6 @@ public class Tile {
 		return _image;
 	}
 	
-	public void setImage(ImageIcon _image) {
-		this._image = _image;
-	}
-
-	
 	/**
 	 * This method allows a follower to be placed on a tile at the position specific by the int that is passed in.
 	 * 
@@ -167,16 +162,8 @@ public class Tile {
 		return _followerSpot;
 	}
 	
-	public int get_followerSpot() {
-		return _followerSpot;
-	}
-
-
-	public void setFollowerSpot(int _followerSpot) {
-		this._followerSpot = _followerSpot;
-	}
-
-
+	
+	 
 	public int getRotationIndex() {
 		return _rotation;
 	}
@@ -190,9 +177,6 @@ public class Tile {
 	public String getId() {
 		return _id;
 	}
-
-
-	
 	
 	
 }
