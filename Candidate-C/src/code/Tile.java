@@ -65,7 +65,7 @@ public class Tile {
 		_shield = s;
 		_image = img;
 		_sides = new String[][] {_side1, _side2, _side3, _side4};
-		_followerSpot = 9;
+		_followerSpot = 13;
 		_id = id;
 		
 	}
@@ -95,7 +95,7 @@ public class Tile {
 		_shield = s;
 		_image = img;
 		_sides = new String[][] {_side1, _side2, _side3, _side4};
-		_followerSpot = 9;
+		_followerSpot = 13;
 		
 	}
 	/**
@@ -162,8 +162,16 @@ public class Tile {
 		return _followerSpot;
 	}
 	
-	
-	 
+	public int get_followerSpot() {
+		return _followerSpot;
+	}
+
+
+	public void setFollowerSpot(int _followerSpot) {
+		this._followerSpot = _followerSpot;
+	}
+
+
 	public int getRotationIndex() {
 		return _rotation;
 	}

@@ -58,7 +58,6 @@ public class Board {
 	 */
 	private Tile _tile;
 	
-	
 	/**
 	 * The constructor of the Board class creates a 2D tile array of size [144][144], which is the maximum size the board may get if all of the tiles were 
 	 * placed in one line. Whenever the board is initialized at the start of a new game the starting tile is placed automatically in the center of the board. 
@@ -225,7 +224,7 @@ public class Board {
 	public Tile pickRiverTile(){
 		
 		//create river tile array list
-		ArrayList<Tile> riverTileList = _tileTypes.getRiverTileList();
+		ArrayList<Tile> riverTileList = _tileTypes.getTileList();
 		
 		//create size variable
 		int size = riverTileList.size();
@@ -233,22 +232,22 @@ public class Board {
 		//create and set "last" tile as the "river end" tile which is in position size-1 of the original arrayList in tileTypes class
 		Tile last = riverTileList.get(size-1);
 		
-		//remove last element from array list "river end" tile 
+		//remove last element from array list
 		riverTileList.remove(size-1);
 		
-		//shuffle list "river Deck" 
+		//shuffle list
 		Collections.shuffle(riverTileList);
 		
-		//add "river end" tile back to the deck
+		//add "river end" tile back to the list 
 		riverTileList.add(last);
 		
-		// temp tile "tile" is first element in the list 
+		}
+		else
+		{
 		Tile tile = riverTileList.get(0);
-		
-		// removes tile from river deck 
 		riverTileList.remove(0);
 		return tile;	
-	
+		}
 	}
 
 	/**
@@ -305,7 +304,7 @@ public class Board {
 	 * @param i		Takes in an int that represents a follower position on a Tile
 	 */
 	public void followerOnTile(int i){
-		_tile.setFollowerSpot(i);
+		_tile.getFollower(i);
 	}
 	
 	/**
@@ -326,13 +325,8 @@ public class Board {
 	public int getHash(String s){
 		return _meeple.get(s);
 	}
-	
 	public TileTypes getTileStack() {
 		// TODO Auto-generated method stub
 		return _tileTypes;
-	}
-	
-	public Tile getTile() {
-		return _tile;
 	}
 }

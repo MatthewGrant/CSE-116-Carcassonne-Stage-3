@@ -70,15 +70,16 @@ public class Board {
 		
 		_players = players;
 		
-		//this creates and places the pre-determined "starting tile"
-		String[] side1 = new String[] {"city", "city", "city"};
-		String[] side2 = new String[] {"field", "road", "field"};
-		String[] side3 = new String[] {"field", "field", "field"};
-		String[] side4 = new String[] {"field", "road", "field"};
-		String inside = null;
-		ImageIcon img = new ImageIcon("resources/11.png");
-		Tile startingTile = new Tile(side1,side2,side3,side4, inside, false, img, 9);
+		//this creates and places the pre-determined "starting tile" of type River 
+		String[] side1 = new String[] {"field", "field","field"};
+		String[] side2 = new String[] {"field", "field","field"};
+		String[] side3 = new String[] {"field", "river","field"};
+		String[] side4 = new String[] {"field", "field","field"};
+		String inside = "river start";
+		ImageIcon img = new ImageIcon("resources/25.png"); //new ImageIcon(getClass().getResource("/resources/25.png")
+		Tile startingTile = new Tile(side1,side2,side3,side4, inside, false, img, 9,"RA");
 		_board[71][71] = startingTile;
+			
 		
 		_xright = 0;
 		_xleft = 0;
@@ -88,6 +89,7 @@ public class Board {
 		_placements = 0;
 		_tileTypes = new TileTypes();
 		_tileTypes.createTiles();
+		_tileTypes.createRiverTiles();
 		_meeple = new HashMap<String, Integer>();
 		for(int i=0; i<_players.size(); i++) {
 			_meeple.put(_players.get(i), 7);
@@ -218,6 +220,36 @@ public class Board {
 		return tile;	
 	}
 	
+	//pick river tiles 
+	public Tile pickRiverTile(){
+		
+		//create river tile array list
+		ArrayList<Tile> riverTileList = _tileTypes.getTileList();
+		
+		//create size variable
+		int size = riverTileList.size();
+		
+		//create and set "last" tile as the "river end" tile which is in position size-1 of the original arrayList in tileTypes class
+		Tile last = riverTileList.get(size-1);
+		
+		//remove last element from array list
+		riverTileList.remove(size-1);
+		
+		//shuffle list
+		Collections.shuffle(riverTileList);
+		
+		//add "river end" tile back to the list 
+		riverTileList.add(last);
+		
+		// temp tile "tile" is first element in the list 
+		Tile tile = riverTileList.get(0);
+		
+		// 
+		riverTileList.remove(0);
+		return tile;	
+	
+	}
+
 	/**
 	 * This method compares two int values. The _placements variable is a counter that keeps track of how many times a tile has been placed. The _temp variable stores the 
 	 * value of _placements before a tile is potentially placed. In this method, the value of _temp is assigned to a local variable, _temp is updated to the current value
@@ -238,6 +270,12 @@ public class Board {
 	 */
 	public int getTileList(){
 		return _tileTypes.getTileList().size();
+	}
+	
+	
+	//Added for river tiles 
+	public int getRiverTileList(){
+		return _tileTypes.getRiverTileList().size();
 	}
 	
 	/**
@@ -286,5 +324,9 @@ public class Board {
 	 */
 	public int getHash(String s){
 		return _meeple.get(s);
+	}
+	public TileTypes getTileStack() {
+		// TODO Auto-generated method stub
+		return _tileTypes;
 	}
 }

@@ -1,11 +1,13 @@
 package code;
 
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Transparency;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,7 +33,12 @@ public class PlaceFollower implements ActionListener {
 	private JButton _button;
 	private JFrame _frame;
 	private Board _board;
+	private Color _color; 
 	
+	
+	
+	
+
 	/**
 	 * The constructor initializes all of the instance variables to objects that are passed in.
 	 * 
@@ -57,6 +64,22 @@ public class PlaceFollower implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		int i = _view.getFollowerPosition((JButton) e.getSource());
 		_board.followerOnTile(i);
+		
+		// 1. get imageIcon of tile 
+		// ImageIcon img = _board.getTile().getImage(); 
+		// 2. create buffered image from imageIcon
+		// BufferedImage buffFollower = new BufferedImage(img.getIconWidth(),img.getIconHeight(), Transparency.BITMASK);
+		// 3. create graphics 2D object 
+		// Graphics2D g = (Graphics2D) buffFollower.getGraphics();
+		// 4. set color of 2D graphics (need each player to have a color c) 
+		// g.setColor(_color);
+		// 5. fillrect (getlocationofmeeple(x,y), size) This will modify the buffered image
+		// g.fillRect(x, y, width, height);
+		// 6. create new imageicon(buffered image) 
+		//
+		// 7. set image of Jbutton with new imageIcon 
+		// view.update()
+		
 		/*ImageIcon img = new ImageIcon(getClass().getResource("/resources/follower"+i+".png"));
 		BufferedImage buffFollower = new BufferedImage(img.getIconWidth(),img.getIconHeight(), Transparency.BITMASK);
 		Graphics2D g = (Graphics2D) buffFollower.getGraphics();
@@ -78,5 +101,13 @@ public class PlaceFollower implements ActionListener {
 		ImageIcon image = new ImageIcon(buffImage);
 		_button.setIcon(image);*/
 		_frame.setVisible(false);
+	}
+	
+	public Color get_color() {
+		return _color;
+	}
+
+	public void set_color(Color _color) {
+		this._color = _color;
 	}
 }

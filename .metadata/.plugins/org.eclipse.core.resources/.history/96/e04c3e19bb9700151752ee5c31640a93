@@ -130,7 +130,7 @@ public class View {
 				a.setPreferredSize(new Dimension(80,80));
 				a.addActionListener(_event);
 				if((i==1) && (j==1)){
-					ImageIcon img = new ImageIcon(getClass().getResource("/resources/25.png"));
+					ImageIcon img = new ImageIcon(getClass().getResource("/resources/11.png"));
 					a.setIcon(img);
 				}
 				_gameplay.add(a);
@@ -443,9 +443,9 @@ public class View {
 		_window.pack();
 	}
 	
-	// added for river tiles
+	
 	public void nextRiverTile() {
-		_newTile = _board.pickRiverTile();
+		_newTile = _board.pickTile();
 		_image = _newTile.getImage();
 		_nextTileButton.setIcon(_image);
 		_window.pack();
@@ -471,17 +471,17 @@ public class View {
 		JFrame frame = new JFrame("Follower Placement");
 		frame.setLocationRelativeTo(null);
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(5,3));
+		panel.setLayout(new GridLayout(3,3));
 		PlaceFollower handler = new PlaceFollower(this, _button, frame, _board);
 		_followerList = new ArrayList<JButton>();
-		for(int i = 0; i < 13; i++){ //update to handle more Jbuttons 
+		for(int i = 0; i < 9; i++){
 			JButton b = new JButton();
 			b.addActionListener(handler);
 			_followerList.add(b);
-			String[] s1 = _oldTile.accessSides(1); 
-			String[] s2 = _oldTile.accessSides(2); 
-			String[] s3 = _oldTile.accessSides(3); 
-			String[] s4 = _oldTile.accessSides(4); 
+			String[] s1 = _oldTile.accessSides(1);
+			String[] s2 = _oldTile.accessSides(2);
+			String[] s3 = _oldTile.accessSides(3);
+			String[] s4 = _oldTile.accessSides(4);
 			if(i==0){
 				if(!(s1[0].equals(s4[2]))){
 					b.setText("field");
@@ -500,16 +500,16 @@ public class View {
 				}
 			}
 			if(i==3){
-				b.setText(s2[0]);
+				b.setText(s4[1]);
 			}
 			if(i==4){
-				b.setText(s2[1]);
+				b.setText(_oldTile.accessCenter());
 			}
 			if(i==5){
-				b.setText(s2[2]);
+				b.setText(s2[1]);
 			}
 			if(i==6){
-				if(!(s3[2].equals(s2[2]))){
+				if(!(s3[2].equals(s4[0]))){
 					b.setText("field");
 				}else{
 					b.setText(s3[2]);
@@ -519,33 +519,12 @@ public class View {
 				b.setText(s3[1]);
 			}
 			if(i==8){
-				if(!(s4[2].equals(s3[0]))){
+				if(!(s2[2].equals(s3[0]))){
 					b.setText("field");
 				}else{
-					b.setText(s3[0]);
+					b.setText(s2[2]);
 				}
 			}
-			if(i==9){
-				if(!(s3[0].equals(s4[2]))){
-					b.setText("field");
-				}else{
-					b.setText(s4[2]);
-				}
-			}
-			if(i==10){
-				b.setText(s4[1]);
-			}
-			if(i==11){
-				if(!(s4[0].equals(s1[0]))){
-					b.setText("field");
-				}else{
-					b.setText(s4[0]);
-				}
-			}
-			if(i==12){
-				b.setText(_oldTile.accessCenter());
-			}
-			
 			panel.add(b);
 		}
 		frame.add(panel);
