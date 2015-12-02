@@ -497,34 +497,7 @@ public class View {
 			String[] s3 = _oldTile.accessSides(3); 
 			String[] s4 = _oldTile.accessSides(4); 
 			
-			//new jpanels representing the new layout used for the follower placement frame
-			//JPanel top= new JPanel();
-			//top.setLayout(new GridLayout(3,1));
-			/*/top.add(b, 0);
-			top.add(_button, 1);
-			top.add(_button, 2);/*/
 			
-			//JPanel right= new JPanel();
-			//right.setLayout(new GridLayout(1,3));
-			/*/right.add(_button, 3);
-			right.add(_button, 4);
-			right.add(_button, 5);/*/
-			
-			//JPanel bottom= new JPanel();
-			//bottom.setLayout(new GridLayout(3,1));
-			/*/bottom.add(_button, 8);
-			bottom.add(_button, 7);
-			bottom.add(_button, 6);/*/
-			
-			//JPanel left= new JPanel();
-			//left.setLayout(new GridLayout(1,3));
-			/*/left.add(_button, 11);
-			left.add(_button, 10);
-			left.add(_button, 9);/*/
-			
-			//JPanel center= new JPanel();
-			//center.setLayout(new GridLayout(1,1));
-			//center.add(_button, 12);
 			
 			
 			
