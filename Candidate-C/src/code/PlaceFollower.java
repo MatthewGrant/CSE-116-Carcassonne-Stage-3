@@ -36,7 +36,7 @@ public class PlaceFollower implements ActionListener {
 	private JFrame _frame;
 	private Board _board;
 	//private Color _color; //?? need to give a COLOR to each player , need to get turn number 
-	private int _meeplePosition; //need to get/set Meeple (x,y) coords for image tile 
+	
 	
 	
 	
@@ -65,6 +65,7 @@ public class PlaceFollower implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		int i = _view.getFollowerPosition((JButton) e.getSource());
+		// print i e.getsorce()).gettext 
 		_board.followerOnTile(i);
 		
 		// 1. get imageIcon of tile 

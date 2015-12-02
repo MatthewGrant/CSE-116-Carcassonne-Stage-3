@@ -62,9 +62,9 @@ public class PlayerTurns implements Runnable{
 			case 0:
 				//gets the player name and places it on the view
 				_p = i%_players.size();
-				System.out.print(_p);
+				System.out.print(" Player ID: "+ _p);
 				String player = _players.get(_p);
-				System.out.print(player);
+				System.out.println(" Player Name: "+ player);
 				i++; //increments the player number
 				_view.updateTurn(player);
 				

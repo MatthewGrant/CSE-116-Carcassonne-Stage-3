@@ -21,8 +21,17 @@ public class Tile {
 	private String[] _side2;
 	private String[] _side3;
 	private String[] _side4;
+	
+	
 	private String _id;
+	
+	
+	/**
+	 * 
+	 */
 	private int _rotation = 0;
+	
+	
 	
 	/**
 	 * The feature that is located at the center of the tile, could be "cloister", "road end", "city", "road", or "field" 
