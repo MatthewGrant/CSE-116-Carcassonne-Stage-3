@@ -69,7 +69,7 @@ public class TileTypes {
 					String[] s3 = {"field", "field","field"};
 					String inside = "field";
 					ImageIcon img = new ImageIcon(getClass().getResource("/resources/2.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 13,"B",true,false);
+					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 13,"B",false,false);
 					_tileList.add(t);
 				}
 			}
@@ -81,7 +81,7 @@ public class TileTypes {
 					String[] s3 = {"field", "field","field"};
 					String inside = "field";
 					ImageIcon img = new ImageIcon(getClass().getResource("/resources/3.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 13,"C",true,false);
+					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 13,"C");
 					_tileList.add(t);
 				}
 			}
@@ -261,7 +261,7 @@ public class TileTypes {
 					String[] s3 = {"field", "road","field"};
 					String inside = "road end";
 					ImageIcon img = new ImageIcon(getClass().getResource("/resources/18.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 13,"T",false,true);
+					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 13,"T");
 					_tileList.add(t);
 				}
 			}
@@ -321,7 +321,7 @@ public class TileTypes {
 					String[] s3 = {"field", "road","field"};
 					String inside = "road end";
 					ImageIcon img = new ImageIcon(getClass().getResource("/resources/23.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 13,"Y",false,true);
+					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 13,"Y");
 					_tileList.add(t);
 				}
 			}
@@ -333,7 +333,7 @@ public class TileTypes {
 					String[] s3 = {"field", "road","field"};
 					String inside = "road end";
 					ImageIcon img = new ImageIcon(getClass().getResource("/resources/24.png"));
-					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 13,"Z",false,true);
+					Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 13,"Z");
 					_tileList.add(t);
 				}
 			}
@@ -413,7 +413,7 @@ public class TileTypes {
 						String[] s3 = {"city", "city","city"};
 						String inside = "river";
 						ImageIcon img = new ImageIcon(getClass().getResource("/resources/31.png"));
-						Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 13,"RG",true,false);
+						Tile t = new Tile(s0,s1,s2,s3, inside, false, img, 13,"RG");
 						_riverTileList.add(t);
 					}
 				}
