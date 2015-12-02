@@ -471,7 +471,21 @@ public class View {
 		JFrame frame = new JFrame("Follower Placement");
 		frame.setLocationRelativeTo(null);
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(5,3));
+		//panel.setLayout(new GridLayout(5,3));
+		BorderLayout border = new BorderLayout();
+		border.setHgap(20);
+		panel.setLayout(border);
+		JPanel top= new JPanel();
+		top.setLayout(new GridLayout(1,3));
+		JPanel right= new JPanel();
+		right.setLayout(new GridLayout(3,1));
+		JPanel bottom= new JPanel();
+		bottom.setLayout(new GridLayout(1,3));
+		JPanel left= new JPanel();
+		left.setLayout(new GridLayout(3,1));
+		JPanel center= new JPanel();
+		center.setLayout(new GridLayout(1,1));
+		
 		PlaceFollower handler = new PlaceFollower(this, _button, frame, _board);
 		_followerList = new ArrayList<JButton>();
 		for(int i = 0; i < 13; i++){ //update to handle more Jbuttons 
@@ -482,72 +496,131 @@ public class View {
 			String[] s2 = _oldTile.accessSides(2); 
 			String[] s3 = _oldTile.accessSides(3); 
 			String[] s4 = _oldTile.accessSides(4); 
+			
+			//new jpanels representing the new layout used for the follower placement frame
+			//JPanel top= new JPanel();
+			//top.setLayout(new GridLayout(3,1));
+			/*/top.add(b, 0);
+			top.add(_button, 1);
+			top.add(_button, 2);/*/
+			
+			//JPanel right= new JPanel();
+			//right.setLayout(new GridLayout(1,3));
+			/*/right.add(_button, 3);
+			right.add(_button, 4);
+			right.add(_button, 5);/*/
+			
+			//JPanel bottom= new JPanel();
+			//bottom.setLayout(new GridLayout(3,1));
+			/*/bottom.add(_button, 8);
+			bottom.add(_button, 7);
+			bottom.add(_button, 6);/*/
+			
+			//JPanel left= new JPanel();
+			//left.setLayout(new GridLayout(1,3));
+			/*/left.add(_button, 11);
+			left.add(_button, 10);
+			left.add(_button, 9);/*/
+			
+			//JPanel center= new JPanel();
+			//center.setLayout(new GridLayout(1,1));
+			//center.add(_button, 12);
+			
+			
+			
+			
 			if(i==0){
 				if(!(s1[0].equals(s4[2]))){
 					b.setText("field");
+					top.add(b);
 				}else{
 					b.setText(s1[0]);
+					top.add(b);
 				}
 			}
 			if(i==1){
 				b.setText(s1[1]);
+				top.add(b);
 			}
 			if(i==2){
 				if(!(s1[2].equals(s2[0]))){
 					b.setText("field");
+					top.add(b);
 				}else{
 					b.setText(s1[2]);
+					top.add(b);
 				}
 			}
 			if(i==3){
 				b.setText(s2[0]);
+				right.add(b);
 			}
 			if(i==4){
 				b.setText(s2[1]);
+				right.add(b);
 			}
 			if(i==5){
 				b.setText(s2[2]);
+				right.add(b);
 			}
 			if(i==6){
 				if(!(s3[2].equals(s2[2]))){
 					b.setText("field");
+					bottom.add(b);
 				}else{
 					b.setText(s3[2]);
+					bottom.add(b);
 				}
 			}
 			if(i==7){
 				b.setText(s3[1]);
+				bottom.add(b);
 			}
 			if(i==8){
 				if(!(s4[2].equals(s3[0]))){
 					b.setText("field");
+					bottom.add(b);
 				}else{
 					b.setText(s3[0]);
+					bottom.add(b);
 				}
 			}
 			if(i==9){
 				if(!(s3[0].equals(s4[2]))){
 					b.setText("field");
+					left.add(b);
 				}else{
 					b.setText(s4[2]);
+					left.add(b);
 				}
 			}
 			if(i==10){
 				b.setText(s4[1]);
+				left.add(b);
 			}
 			if(i==11){
 				if(!(s4[0].equals(s1[0]))){
 					b.setText("field");
+					left.add(b);
 				}else{
 					b.setText(s4[0]);
+					left.add(b);
 				}
 			}
 			if(i==12){
 				b.setText(_oldTile.accessCenter());
+				center.add(b);
 			}
 			
-			panel.add(b);
+			
+			
+			//panel.add(b);
 		}
+		panel.add(top, BorderLayout.NORTH);
+		panel.add(right, BorderLayout.EAST);
+		panel.add(bottom, BorderLayout.SOUTH);
+		panel.add(left, BorderLayout.WEST);
+		panel.add(center, BorderLayout.CENTER);
 		frame.add(panel);
 		frame.pack();
 		frame.setVisible(true);
@@ -570,12 +643,16 @@ public class View {
 									{73,23}, // 3
 									{73,38}, // 4
 									{73,54}, // 5
-									{55,73}, // 6 
+									//{55,73}, // 6 origional
+									{23,73}, // 6
 									{39,73}, // 7 
-									{23,73}, // 8 
-									{3,54}, // 9
+									//{23,73}, // 8 origional
+									{55,73}, // 8 
+									//{3,54}, // 9 origional
+									{3,23}, // 9
 									{3,38}, // 10
-									{3,23}, // 11
+									//{3,23}, // 11 origional
+									{3,54}, // 11
 									{39,39}}; // 12 (center)
 	
 	
