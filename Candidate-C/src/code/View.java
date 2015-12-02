@@ -443,7 +443,7 @@ public class View {
 		_window.pack();
 	}
 	
-	// added for river tiles
+	// added for river tiles need to change this 
 	public void nextRiverTile() {
 		_newTile = _board.pickRiverTile();
 		_image = _newTile.getImage();

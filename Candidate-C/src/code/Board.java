@@ -235,6 +235,7 @@ public class Board {
 		//create size variable
 		int size = riverTileList.size();
 		System.out.println("inital Size " + size);
+		
 		//create and set "last" tile as the "river end" tile which is in position size-1 of the original arrayList in tileTypes class
 		Tile last = riverTileList.get(size-1);
 		
@@ -255,6 +256,7 @@ public class Board {
 		return tile;	
 	
 	}
+	
 
 	/**
 	 * This method compares two int values. The _placements variable is a counter that keeps track of how many times a tile has been placed. The _temp variable stores the 

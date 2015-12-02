@@ -69,13 +69,12 @@ public class PlayerTurns implements Runnable{
 				_view.updateTurn(player);
 				
 				//displays the tile which the player can place
-				//_view.nextRiverTile();
+				_view.nextRiverTile();
 				state = 1;
 				break;
 			case 1:
 				//does not move on until a tile is placed legally in the board
 				if(!_board.tilePlaced()){
-					_view.nextRiverTile();
 					state = 1;
 				}else{
 					state = 2;
