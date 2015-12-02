@@ -170,7 +170,7 @@ public class TileTypes {
 				}
 			}
 			if (type == 11) {
-				for (int i=0; i<3; i++) {
+				for (int i=0; i<4; i++) {
 					String[] s0 = {"city", "city", "city"};
 					String[] s1 = {"field", "road", "field"};
 					String[] s2 = {"field", "field","field"};
