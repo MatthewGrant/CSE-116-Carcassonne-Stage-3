@@ -28,7 +28,23 @@ public class SaveFile {
 					}
 				}
 				out.newLine();
+				
 				//line2 Tiles that have been placed, rotation, location and meeple placement  RD1(1,0)[Amy,12]
+				Tile[][] tiles =_board.getBoard().getTile();//need a get bourd 
+				for(int i = 0; i<tiles.length,i++){
+					for (int j = 0; j<tiles[i].length;j++){
+						if(tiles[i][j]!= null){
+							out.write(tiles[i][j].getId()+tiles[i][j].getRotationIndex()+"("+i+","+j+")");
+							if (tiles[i][j].get_follower())//neeed a get follower thing to get the follwers
+							{
+								out.write(tiles[i][j].get_followers().tostring());
+							}
+						}
+					}
+				}
+				
+				
+				
 				//line3 list of tiles left in the "deck" RA,F,D,E,X,.. 
 				for(Tile t :_board.getTileStack().getTileList())
 				{
