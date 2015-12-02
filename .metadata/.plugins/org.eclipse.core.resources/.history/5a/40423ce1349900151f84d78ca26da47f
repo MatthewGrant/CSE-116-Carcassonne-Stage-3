@@ -234,7 +234,7 @@ public class Board {
 		
 		//create size variable
 		int size = riverTileList.size();
-		System.out.println("inital Size " + size);
+		System.out.println("River Tiles left" + size);
 		//create and set "last" tile as the "river end" tile which is in position size-1 of the original arrayList in tileTypes class
 		Tile last = riverTileList.get(size-1);
 		
@@ -246,7 +246,7 @@ public class Board {
 		
 		//add "river end" tile back to the deck
 		riverTileList.add(last);
-		System.out.println("Size after add " + size);
+		
 		// temp tile "tile" is first element in the list 
 		Tile tile = riverTileList.get(0);
 		

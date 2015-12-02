@@ -64,18 +64,17 @@ public class PlayerTurns implements Runnable{
 				_p = i%_players.size();
 				System.out.print(" Player ID: "+ _p);
 				String player = _players.get(_p);
-				System.out.println(" Player Name: "+ player);
+				System.out.print(" Player Name: "+ player);
 				i++; //increments the player number
 				_view.updateTurn(player);
 				
 				//displays the tile which the player can place
-				//_view.nextRiverTile();
+				_view.nextRiverTile();
 				state = 1;
 				break;
 			case 1:
 				//does not move on until a tile is placed legally in the board
 				if(!_board.tilePlaced()){
-					_view.nextRiverTile();
 					state = 1;
 				}else{
 					state = 2;

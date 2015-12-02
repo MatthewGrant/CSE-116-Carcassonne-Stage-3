@@ -30,7 +30,7 @@ public class SaveFile {
 				out.newLine();
 				
 				//line2 Tiles that have been placed, rotation, location and meeple placement  RD1(1,0)[Amy,12]
-				Tile[][] tiles =_board.getTile();//need a get bourd 
+				Tile[][] tiles =_board.getTile();//need a two d array of tiles so that we can get the tiles on the board
 				for(int i = 0; i<tiles.length,i++){
 					for (int j = 0; j<tiles[i].length;j++){
 						if(tiles[i][j]!= null){
