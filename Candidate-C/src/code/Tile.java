@@ -1,5 +1,8 @@
 package code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.ImageIcon;
 /**
  * Tile is an array of size four that holds String arrays of size three. The four String arrays hold the combination of types (city, road, or 
@@ -17,10 +20,25 @@ public class Tile {
 	/**
 	 * The four arrays of three strings that represent the sides
 	 */
-	private String[] _side1;
-	private String[] _side2;
-	private String[] _side3;
-	private String[] _side4;
+	private String[] _side1; //0,1,2
+	private String[] _side2; //3,4,5
+	private String[] _side3; //8,7,6
+	private String[] _side4; //11,10,9
+	
+	/**
+	 *  holds the feature location if that particular feature is occupied [0,1,2]
+	 */
+	private ArrayList<Integer> _occupiedFeatures; 
+	
+	/**
+	 *  x location of tile on board
+	 */
+	private int _xloc; 
+	
+	/**
+	 * y location of tile on board
+	 */
+	private int _yloc;
 	
 	
 	/**
@@ -28,14 +46,21 @@ public class Tile {
 	 */
 	private String _id;
 	
-	
 	/**
 	 *  Int that holds current orientation of the tile  0 - normal position,  1 - 90 degrees, 2- 180 degrees, 3- 270 degrees
 	 */
 	private int _rotation = 0;
 	
 	 
+	/**
+	 *  True if tile has two or more roads 
+	 */
 	private boolean _hasTwoRoads; 
+	
+	
+	/**
+	 *  True if the tile has 2 cities
+	 */
 	private boolean _hasTwoCities;
 	
 	/**
@@ -81,7 +106,7 @@ public class Tile {
 		_sides = new String[][] {_side1, _side2, _side3, _side4};
 		_followerSpot = f;
 		_id = id;
-		
+	
 	}
 	
 	
@@ -196,22 +221,84 @@ public class Tile {
 	}
 
 
+	public ArrayList<Integer> getOccupiedFeatures() {
+		return _occupiedFeatures;
+	}
+	
+	
+	/**
+	 * @param i Feature location (0-->12)  
+	 * @return	Return true is feature is in the OccupiedFeatures Array
+	 */
+	public boolean getOccupiedFeatures(int i) {
+		return _occupiedFeatures.contains(i);
+	}
+
+
+	/**
+	 * @param i  add feature at location i to OccupiedFeatures array 
+	 */
+	public void setOccupiedFeatures(int i) {
+		this._occupiedFeatures.add(i);
+	}
+
+
 	public int getRotationIndex() {
 		return _rotation;
 	}
 	
 	
+	public void setXloc(int x) {
+		this._xloc = x;
+	}
+
+
+	public  int[] getCoordinates(){
+		int[] coords = {this._xloc,this._yloc};
+		return coords;
+	}
+	
+
+	/**
+	 * @param y Set y location of tile once placed on board
+	 */
+	public void setYloc(int y) {
+		this._yloc = y;
+	}
+
+
 	public void setrotationIndex(int _rotation) {
 		this._rotation = _rotation;
 	}
 
 
+	/**
+	 * @return Returns Tile ID i.e "RA" 
+	 */
 	public String getId() {
 		return _id;
 	}
 
-
+	/**
+	 * @return Returns the feature at a specific location on the tile 
+	 */
+	public String getFeature(int i){
+		
+	}
 	
+	
+	/**
+	 * @return Returns an arrayList of all features on tile ["field","field","field","field","Road",...]
+	 */
+	public ArrayList<String> getAllFeatures(String[][] sides){
+		 ArrayList<Integer> list = new ArrayList<Integer>();
+		 for (int i = 0; i < sides.length; i++) {
+			 for (int j = 0; j < sides[i].length; j++) { 
+		           list.add(sides[i][j]); 
+		        }
+		    }
+
+	}
 	
 	
 }
