@@ -153,8 +153,30 @@ public class Board {
 		return false;
 	}
 	
-	public boolean forcePlaceTile(Tile t, int x, int y) {
-		
+	public void forcePlaceTile(Tile t, int x, int y) {
+		_tile = t;
+		_board[x][y] = t;
+		// set x,y pos for tile
+		t.setXloc(x);
+		t.setYloc(y);
+		int tempx = x-71;
+		int tempy = y-71;
+		if(tempx > _xright){
+			_xright = tempx;
+			_view.updateRight(t,x,y);
+		} else if(tempx < 0 && tempx < _xleft){
+			_xleft = tempx;
+			_view.updateLeft(t,x,y);
+		} else if(tempy > _yup){
+			_yup = tempy;
+			_view.updateUp(t,x,y);
+		} else if(tempy < 0 && tempy < _ydown){
+			_ydown = tempy;
+			_view.updateDown(t,x,y);
+		} else {
+			_view.update(t,x,y);
+		}
+		_placements++;
 	}
 		
 		
