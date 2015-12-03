@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public class LoadFile {
 	private Board _board;
-	
+	private ArrayList<Player> list;
 	
 	public LoadFile(Board b, String url ){
 		_board = b;
@@ -30,11 +30,14 @@ public class LoadFile {
 		}
 		
 	}
+	public ArrayList<Player> getList(){
+		return list;
+	}
 	public void readLine1(String s){
 		String player ="";
 		String color = "";
 		String score = "";
-		ArrayList<Player> list = new ArrayList<Player>();
+		list = new ArrayList<Player>();
 		int state = 0;
 		
 		//this was line one

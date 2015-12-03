@@ -44,6 +44,13 @@ public class PlayerTurns implements Runnable{
 		_view = new View(_board);
 		_board.setView(_view); //makes sure the same View is used consistently throughout
 	}
+	
+	public PlayerTurns(){
+		
+		_board = new Board(_players);
+		_view = new View(_board);
+		_board.setView(_view); //makes sure the same View is used consistently throughout
+	}
 
 	/**
 	 * This method is created as a method of the implemented class Runnable. Consists of a state machine which
