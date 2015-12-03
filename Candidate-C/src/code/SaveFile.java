@@ -23,7 +23,7 @@ public class SaveFile {
 				//line1 [player,color,score] all done don't touch matt or dan
 				for(int i =0;i<_board.getPlayers().size();i++)
 				{
-					out.write("["+_board.getPlayers().get(i) +","+ colorToString(getColor(i)) +","+ _board.get_playersScore().get(i)+"]");
+					out.write("["+_board.getPlayers().get(i).get_name() +","+ colorToString(getColor(i)) +","+ _board.get_playersScore().get(i)+"]");
 					if(i<_board.getPlayers().size()-1)
 					{
 						out.write(",");
@@ -38,15 +38,14 @@ public class SaveFile {
 					for (int j = 0; j<tiles[i].length;j++){
 						if(tiles[i][j]!= null){
 							out.write(tiles[i][j].getId()+tiles[i][j].getRotationIndex()+"("+i+","+j+")");
-							if (tiles[i][j].getFollowerSpot()!=13)
-							{
-								
+							if (tiles[i][j].getFollowerSpot()!=13&&!tiles[i][j].hasPlayer())
+							{								
 								out.write("["+tiles[i][j].get_followerName()+","+tiles[i][j].getFollowerSpot()+"]");
 							}
 						}
 					}
 				}
-				
+				out.newLine();
 				
 				
 				//line3 list of tiles left in the "deck" RA,F,D,E,X,.. 
@@ -55,8 +54,7 @@ public class SaveFile {
 				{
 					out.write(t.getId()+t.getRotationIndex()+",");
 				}
-				out.newLine();
-				out.close();
+				
 				
 				//for the river tile deck
 				for(Tile t :_board.getTileStack().getRiverTileList())

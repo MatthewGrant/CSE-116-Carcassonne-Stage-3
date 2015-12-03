@@ -211,8 +211,10 @@ public class Tile {
 	 * @return		The int representing the position of the follower
 	 */
 	// getter and setter, break into 2 separate methods 
-	public int getFollower(int f){
+	public int getFollower(int f,Player s){
 		_followerSpot = f;
+
+		_player =s;
 		return _followerSpot;
 	}
 	
@@ -340,7 +342,15 @@ public class Tile {
 	 * @return gets the name of the player that owns the follower
 	 */
 	public String get_followerName() {
+		if(hasPlayer())
 		return _player.get_name();
+		else
+		return "null"; //TODO fix this  _player is pretty much always null
+	}
+
+
+	public boolean hasPlayer() {
+		return _player!=null;
 	}
 	
 	

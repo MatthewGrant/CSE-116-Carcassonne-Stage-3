@@ -179,7 +179,7 @@ public class Board {
 			_view.updateUp(t,x,y);
 		} else if(tempy < 0 && tempy < _ydown){
 			_ydown = tempy;
-			_view.updateDown(t,x,y);
+			//_view.updateDown(t,x,y);
 		} else {
 			_view.update(t,x,y);
 		}

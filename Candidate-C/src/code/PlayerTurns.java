@@ -41,7 +41,7 @@ public class PlayerTurns implements Runnable{
 	public PlayerTurns(ArrayList<Player> a){
 		_players = a;
 		_board = new Board(_players);
-		if(a.size()==12&&a.get(0).get_name().substring(0,4).equals("FAKE"))
+		if(a.size()==1&&a.get(0).get_name().substring(0,4).equals("FAKE"))
 		{
 			LoadFile load = new LoadFile(_board,a.get(0).get_name().substring(4));
 			_players=load.getList();

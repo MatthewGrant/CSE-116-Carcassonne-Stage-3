@@ -191,9 +191,12 @@ public class LoadFile {
 			{
 				temp.rotate(rot);			
 			}
-			
 			_board.forcePlaceTile(temp,Integer.parseInt(x),Integer.parseInt(y));
 			Player p = _board.getPlayer(playerName);
+			if(locFollower.equals(""))
+			{
+				locFollower="0";
+			}
 			temp.setFollowerSpot(Integer.parseInt(locFollower), p);
 			rot =0;
 			id ="";
