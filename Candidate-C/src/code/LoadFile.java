@@ -185,6 +185,10 @@ public class LoadFile {
 			Tile temp= file.getTileById(id);
 			temp.rotate(rot);
 			
+			_board.forcePlaceTile(temp,Integer.parseInt(x),Integer.parseInt(y));
+			Player p = _board.getPlayer(playerName);
+			temp.
+			
 			break;
 		}
 			
