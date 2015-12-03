@@ -100,7 +100,14 @@ public class Board {
 			_meeple.put(_players.get(i), 7);
 		}
 	}
-	
+	public void setPlayers(ArrayList<Player> p)
+	{
+		_players=p;
+		_playersScore = new ArrayList<Integer>();
+		for(int i =0 ;i < _players.size();i++){
+			_playersScore.add(0);
+		}
+	}
 	/**
 	 * Gives the board a reference to a View object.
 	 * 

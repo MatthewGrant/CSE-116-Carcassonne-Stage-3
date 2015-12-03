@@ -21,9 +21,7 @@ public class Driver {
 		if(args.length == 1){
 		
 			// load in Players here
-			LoadFile l = new LoadFile();
-			
-			
+			players.add(new Player("FAKE"+args[0]));
 			PlayerTurns pt = new PlayerTurns(players);
 			pt.run();
 			
