@@ -32,14 +32,16 @@ public class SaveFile {
 				out.newLine();
 				
 				//line2 Tiles that have been placed, rotation, location and meeple placement  RD1(1,0)[Amy,12]
+				// line 2 is done Matt and Dan don't touch I mean it
 				Tile[][] tiles =_board.get_board();
 				for(int i = 0; i<tiles.length;i++){
 					for (int j = 0; j<tiles[i].length;j++){
 						if(tiles[i][j]!= null){
 							out.write(tiles[i][j].getId()+tiles[i][j].getRotationIndex()+"("+i+","+j+")");
-							if (tiles[i][j].get_followerSpot()!=13)
+							if (tiles[i][j].getFollowerSpot()!=13)
 							{
-								out.write(tiles[i][j].get_followerSpot());
+								
+								out.write("["+tiles[i][j].get_followerName()+","+tiles[i][j].getFollowerSpot()+"]");
 							}
 						}
 					}
@@ -55,6 +57,7 @@ public class SaveFile {
 				}
 				out.newLine();
 				out.close();
+				
 				//for the river tile deck
 				for(Tile t :_board.getTileStack().getRiverTileList())
 				{

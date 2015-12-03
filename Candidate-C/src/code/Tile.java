@@ -82,6 +82,9 @@ public class Tile {
 	 */
 	private ImageIcon _image; 
 	
+	
+	private String _followerName;//geting the name of the player that owns the meepe
+	
 	/**
 	 * The constructor initializes all of the instance variables to values that are specified when a tile is created
 	 * 
@@ -218,7 +221,8 @@ public class Tile {
 	}
 
 
-	public void setFollowerSpot(int _followerSpot) {
+	public void setFollowerSpot(int _followerSpot, String s) {
+		_followerName =s;
 		this._followerSpot = _followerSpot;
 	}
 
@@ -330,6 +334,14 @@ public class Tile {
 		        }
 		    }
 		 return (ArrayList<String>) list;
+	}
+
+
+	/**
+	 * @return gets the name of the player that owns the follower
+	 */
+	public String get_followerName() {
+		return _followerName;
 	}
 	
 	
