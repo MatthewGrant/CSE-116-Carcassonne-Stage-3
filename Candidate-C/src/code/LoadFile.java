@@ -75,8 +75,9 @@ public class LoadFile {
 			
 		case 4:
 			state = 0;
-			Player temp = new Player(player,color);
-			list.add(player);
+			Player temp = new Player(player,StringToColor(color));
+			temp.set_score(Integer.parseInt(score));
+			list.add(temp);
 			
 			break;
 		}

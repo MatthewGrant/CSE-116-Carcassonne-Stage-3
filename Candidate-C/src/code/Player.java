@@ -19,6 +19,18 @@ public class Player {
 		
 	}
 	
+	/**
+	 * overload to make other thing work
+	 * @param name of the players
+	 */
+	public Player(String name){
+		// player class to hold the name color and  the score
+		
+		_name = name;
+		
+		_score = 0;
+		
+	}
 	//geter for the class
 
 	
@@ -49,6 +61,13 @@ public class Player {
 	 */
 	public Color get_color() {
 		return _color;
+	}
+
+	/**
+	 * @param _color to set the coloer of the follower for the players
+	 */
+	public void set_color(Color _color) {
+		this._color = _color;
 	}
 	
 
