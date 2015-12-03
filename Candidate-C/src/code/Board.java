@@ -346,7 +346,7 @@ public class Board {
 		if(number > 0){
 			number = number -1;
 			_meeple.put(_players.get(i), number);
-			_players.get(i).setNumMeeples((_players.get(i).getNumMeeples())-1);
+			_players.get(i).placeMeeple();
 			return number;
 		}
 		return 0;
