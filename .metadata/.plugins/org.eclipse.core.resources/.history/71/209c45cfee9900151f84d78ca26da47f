@@ -22,8 +22,8 @@ public class PlayerTurns implements Runnable{
 	/**
 	 * Variable for the ArrayList which holds the player names from the main method in the Driver
 	 */
-	//private ArrayList<String> _players;
-	private ArrayList<Player> _players;
+	private ArrayList<String> _players;
+	
 	/**
 	 * Used inside of the state machine to reference the player whose turn is currently happening
 	 */
@@ -38,7 +38,7 @@ public class PlayerTurns implements Runnable{
 	 * @param a	This passes in the command line arguments for the player names which is in the form of
 	 * 			an ArrayList.
 	 */
-	public PlayerTurns(ArrayList<Player> a){
+	public PlayerTurns(ArrayList<String> a){
 		_players = a;
 		_board = new Board(_players);
 		_view = new View(_board);

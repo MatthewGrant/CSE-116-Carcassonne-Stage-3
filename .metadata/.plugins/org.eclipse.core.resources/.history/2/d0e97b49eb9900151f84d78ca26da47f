@@ -1,0 +1,348 @@
+package code;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.ImageIcon;
+/**
+ * Tile is an array of size four that holds String arrays of size three. The four String arrays hold the combination of types (city, road, or 
+ * field) on each side of the Tile as well as a series of other properties. A tile can be manipulated by the rotate method.
+ * 
+ * @author knjames
+ *
+ */
+public class Tile {
+	/**
+	 * The place on which a follower is located on a tile
+	 */
+	private int _followerSpot;
+	
+	
+	
+	/**
+	 * The four arrays of three strings that represent the sides
+	 */
+	private String[] _side1; //0,1,2
+	private String[] _side2; //3,4,5
+	private String[] _side3; //8,7,6
+	private String[] _side4; //11,10,9
+	
+	/**
+	 *  holds the feature location if that particular feature is occupied [0,1,2]
+	 */
+	private ArrayList<Integer> _occupiedFeatures; 
+	
+	/**
+	 *  x location of tile on board
+	 */
+	private int _xloc; 
+	
+	/**
+	 * y location of tile on board
+	 */
+	private int _yloc;
+	
+	
+	/**
+	 *  String that holds each Tile's ID 
+	 */
+	private String _id;
+	
+	/**
+	 *  Int that holds current orientation of the tile  0 - normal position,  1 - 90 degrees, 2- 180 degrees, 3- 270 degrees
+	 */
+	private int _rotation = 0;
+	
+	 
+	/**
+	 *  True if tile has two or more roads 
+	 */
+	private boolean _hasTwoRoads; 
+	
+	
+	/**
+	 *  True if the tile has 2 cities
+	 */
+	private boolean _hasTwoCities;
+	
+	/**
+	 * The feature that is located at the center of the tile, could be "cloister", "road end", "city", "road", or "field" 
+	 */
+	private String _inside;
+	/**
+	 * A boolean that is true if the tile has a shield and is false if it does not
+	 */
+	private boolean _shield;
+	/**
+	 * An array of all of the side arrays
+	 */
+	private String[][] _sides;
+	/**
+	 * The image of the tile
+	 */
+	private ImageIcon _image; 
+	
+	
+	private String _followerName;//geting the name of the player that owns the meepe
+	
+	/**
+	 * The constructor initializes all of the instance variables to values that are specified when a tile is created
+	 * 
+	 * @param a		Array of strings that represent the top side of the tile
+	 * @param b		Array of strings that represent the right side of the tile 
+	 * @param c		Array of strings that represent the bottom side of the tile
+	 * @param d		Array of strings that represent the left side of the tile
+	 * @param inside	A String that describes what feature is in the middle of the tile
+	 * @param s		A boolean that is true if the tile has a shield and is false if it does not
+	 * @param img	The ImageIcon of the tile
+	 * @param f		The int that describes the location of a follower. It is initialized to 13 because that is not a valid follower position
+	 */
+	public Tile(String[] a,String[] b,String[] c,String[] d, String inside, boolean s, ImageIcon img, int f,String id) {
+		
+		//this puts the four String arrays in the correct configuration on a Tile
+		//this also puts the String (the extra feature) onto the Tile configuration 
+		_side1 = a;
+		_side2 = b;
+		_side3 = c;
+		_side4 = d;	
+		_inside = inside;
+		_shield = s;
+		_image = img;
+		_sides = new String[][] {_side1, _side2, _side3, _side4};
+		_followerSpot = f;
+		_id = id;
+	
+	}
+	
+	
+	/**
+	 * The constructor initializes all of the instance variables to values that are specified when a tile is created
+	 * 
+	 * @param a		Array of strings that represent the top side of the tile
+	 * @param b		Array of strings that represent the right side of the tile 
+	 * @param c		Array of strings that represent the bottom side of the tile
+	 * @param d		Array of strings that represent the left side of the tile
+	 * @param inside	A String that describes what feature is in the middle of the tile
+	 * @param s		A boolean that is true if the tile has a shield and is false if it does not
+	 * @param img	The ImageIcon of the tile
+	 * @param f		The int that describes the location of a follower. It is initialized to 13 because that is not a valid follower position
+	 */
+	public Tile(String[] a,String[] b,String[] c,String[] d, String inside, boolean s, ImageIcon img, int f,String id,boolean Twocities, boolean TwoRoads) {
+		
+		//this puts the four String arrays in the correct configuration on a Tile
+		//this also puts the String (the extra feature) onto the Tile configuration 
+		_side1 = a;
+		_side2 = b;
+		_side3 = c;
+		_side4 = d;	
+		_inside = inside;
+		_shield = s;
+		_image = img;
+		_sides = new String[][] {_side1, _side2, _side3, _side4};
+		_followerSpot = f;
+		_id = id;
+		_hasTwoCities = Twocities;
+		_hasTwoRoads = TwoRoads; 
+		
+	}
+
+
+	/**
+	 * This method takes in an int i which determines the number of times that a tile is rotated. It maintains the configuration where the top of
+	 * the tile is side 1, the right side is side 2, the bottom is side 3, and the left side is side 4.
+	 * 
+	 * @param i		The number of times the tile should be rotated by 90 degrees
+	 */
+	public void rotate(int i) {
+		
+		if (_rotation == 3){
+			_rotation = 0;
+		}
+		else {
+			_rotation += 1;
+		}
+		
+		String[][] temp = new String[4][3];
+		for(int j=0; j<i%4; j++) {
+			for(int k=0; k<4; k++) {
+				temp[(k+1)%4] = _sides[k];
+			}
+			_sides = temp;
+		}
+	}
+	
+	/**
+	 * This method is used in the matchingSide method of the Board. It returns the String array of the side asked for by int i.
+	 * 
+	 * @param i		The side number that is being accessed
+	 * @return		The array of strings of the side being accessed
+	 */
+	public String[] accessSides(int i){
+		return _sides[i-1];
+	}
+	
+	/**
+	 * This method accesses the feature at the center of a Tile, which could be "cloister", "road end", "city", "road", or "field".
+	 * 
+	 * @return		The string of the center feature
+	 */
+	public String accessCenter(){
+		return _inside;
+	}
+	
+	/**
+	 * This method is a getter for the ImageIcon that is a visual representation of the Tile.
+	 * 
+	 * @return		ImageIcon of the tile
+	 */
+	public ImageIcon getImage(){
+		return _image;
+	}
+	
+	public void setImage(ImageIcon _image) {
+		this._image = _image;
+	}
+
+	
+	/**
+	 * This method allows a follower to be placed on a tile at the position specific by the int that is passed in.
+	 * 
+	 * @param f		The int representing the position of the follower
+	 * @return		The int representing the position of the follower
+	 */
+	// getter and setter, break into 2 separate methods 
+	public int getFollower(int f){
+		_followerSpot = f;
+		return _followerSpot;
+	}
+	
+	public int getFollowerSpot() {
+		return _followerSpot;
+	}
+
+
+	public void setFollowerSpot(int _followerSpot, String s) {
+		_followerName =s;
+		this._followerSpot = _followerSpot;
+	}
+
+
+	/**
+	 * @return ArrayList of features that are occupied by a follower on the tile
+	 */
+	public ArrayList<Integer> getOccupiedFeatures() {
+		return _occupiedFeatures;
+	}
+	
+	
+	/**
+	 * @param i feature location on tile (0-->12)  
+	 * @return	Return true is feature is occupied by a Follower (in the OccupiedFeatures Array)
+	 */
+	public boolean getOccupiedFeatures(int i) {
+		return _occupiedFeatures.contains(i);
+	}
+
+	public void distributeOccupiedFeatures(int i){
+		// how to do this?? 
+	}
+
+	/**
+	 * @param i  Adds a feature at location i on tile to OccupiedFeatures array 
+	 */
+	public void setOccupiedFeatures(int i) {
+		this._occupiedFeatures.add(i);
+	}
+
+
+	public int getRotationIndex() {
+		return _rotation;
+	}
+	
+	
+	public void setXloc(int x) {
+		this._xloc = x;
+	}
+
+
+	/**
+	 * @return returns array of the tile's coordinates on the board 
+	 */
+	public  int[] getCoordinates(){
+		int[] coords = {this._xloc,this._yloc};
+		return coords;
+	}
+	
+
+	/**
+	 * @param y Set y location of tile once placed on board
+	 */
+	public void setYloc(int y) {
+		this._yloc = y;
+	}
+
+
+	public void setrotationIndex(int _rotation) {
+		this._rotation = _rotation;
+	}
+
+
+	/**
+	 * @return Returns Tile ID i.e "RA" 
+	 */
+	public String getId() {
+		return _id;
+	}
+
+	/**
+	 * @return Returns the feature String at a specific location on the tile 
+	 */
+	public String getFeature(int i){
+		if (0 <= i && i < 3){
+			//side 1
+			System.out.print(_sides[0][i]);
+			return _sides[0][i];
+		}
+		else if (3 <= i && i < 6){
+			// side 2
+			return _sides[1][i%3];
+		}
+		else if (6<= i && i < 9){
+			//side 3
+			return _sides[2][i%3];
+		}
+		else if (9<= i && i < 12){
+			//side 4
+			return _sides[3][i%3];
+		}
+		else {
+			return _inside;
+		}
+	
+	
+	}
+	
+	
+	/**
+	 * @return Returns an arrayList<Strings> of all features on tile ["field","field","field","field","Road",...]
+	 */
+	public ArrayList<String> getAllFeatures(String[][] sides){
+		 List<String> list = new ArrayList<String>();
+		 for (int i = 0; i < sides.length; i++) {
+			 for (int j = 0; j < sides[i].length; j++) { 
+		           list.add(sides[i][j]); 
+		        }
+		    }
+		 return (ArrayList<String>) list;
+	}
+
+
+	/**
+	 * @return gets the name of the player that owns the follower
+	 */
+	public String get_followerName() {
+		return _followerName;
+	}
+	
+	
+}
