@@ -35,7 +35,7 @@ public class PlaceFollower implements ActionListener {
 	private JButton _button;
 	private JFrame _frame;
 	private Board _board;
-	//private Color _color; //?? need to give a COLOR to each player , need to get turn number 
+
 	
 	
 	
@@ -93,8 +93,7 @@ public class PlaceFollower implements ActionListener {
 	}
 	
 	
-	//create method to get xcoord,ycoord from arrayList 
-	// i corresponds to follower position and the coord in array
+	
 	/**
 	 * @param i , follower position from 0 to 12
 	 * @return Returns an array of x and y coordinate pair corresponding the the meeple position in terms of pixels on the tile. 

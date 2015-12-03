@@ -120,9 +120,6 @@ public class Board {
 			if (isAdjacent(x,y)) {
 				if(matchingSide(t,x,y)) {
 					_board[x][y] = t;
-					// set x,y pos for tile
-					t.setXloc(x);
-					t.setYloc(y);
 					int tempx = x-71;
 					int tempy = y-71;
 					if(tempx > _xright){
@@ -312,7 +309,7 @@ public class Board {
 	}
 	
 	/**
-	 * This method calls setFollowerSpot() on the tile that was most recently placed, passing in the int that represents
+	 * This method calls getFollower() on the tile that was most recently placed, passing in the int that represents
 	 * the position of the follower on the tile.
 	 * 
 	 * @param i		Takes in an int that represents a follower position on a Tile
