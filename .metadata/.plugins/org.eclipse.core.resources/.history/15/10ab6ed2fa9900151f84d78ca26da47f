@@ -425,7 +425,7 @@ public class View {
 			panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 			JLabel label1 = new JLabel(""+_board.getPlayers().get(i).get_name());
 			panel.add(label1);
-			JLabel label2 = new JLabel("Followers: "+_board.getPlayer(player).getNumMeeples()); //getHash(_board.getPlayers().get(i)));
+			JLabel label2 = new JLabel("Followers: "+player); //getHash(_board.getPlayers().get(i)));
 			panel.add(label2);
 			JLabel label3 = new JLabel("Score: 0");
 			panel.add(label3);

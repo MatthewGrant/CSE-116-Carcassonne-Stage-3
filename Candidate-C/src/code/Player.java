@@ -90,5 +90,10 @@ public class Player {
 	    this._numMeeples = numMeeples;
 	  }
 
-
+	  /**
+	 * Removes meeple from player 
+	 */
+	public void placeMeeple(){
+		  this._numMeeples--;
+	  }
 }

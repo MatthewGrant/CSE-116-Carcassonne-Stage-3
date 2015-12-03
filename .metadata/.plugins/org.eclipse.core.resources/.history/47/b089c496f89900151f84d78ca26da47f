@@ -339,7 +339,7 @@ public class Board {
 		if(number > 0){
 			number = number -1;
 			_meeple.put(_players.get(i), number);
-			_players.get(i).setNumMeeples((_players.get(i).getNumMeeples())-1);
+			_players.get(i).setNumMeeples(_players.get(i).getNumMeeples()-1);
 			return number;
 		}
 		return 0;
@@ -363,19 +363,6 @@ public class Board {
 	public ArrayList<Player> getPlayers(){
 		return _players;
 	}
-	
-	public Player getPlayer(String name){
-		Player player = null;
-		for (int i = 0; i < _players.size(); i++ ){
-			String playerName = _players.get(i).get_name();
-			if( name == playerName){
-				player =  _players.get(i);
-				
-			}
-		}
-		return player;
-	}
-	
 	
 	public ArrayList<String> getPlayerNames(){
 		ArrayList<String> playerNames = new ArrayList<String>();
