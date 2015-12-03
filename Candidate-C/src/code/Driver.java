@@ -22,5 +22,8 @@ public class Driver {
 		}
 		PlayerTurns pt = new PlayerTurns(players);
 		pt.run();
+		
+		
+		
 	}
 }

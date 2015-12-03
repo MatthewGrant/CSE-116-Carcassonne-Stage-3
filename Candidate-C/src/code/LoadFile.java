@@ -16,15 +16,11 @@ public class LoadFile {
 			BufferedReader reader = new BufferedReader(new FileReader(url));
 			String line = reader.readLine();
 			
-			
-			
-			
 		}
 		catch(Exception e){
 			e.printStackTrace();
 			
 		}
-		
 		
 	}
 	public void readLine1(String s){
