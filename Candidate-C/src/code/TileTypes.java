@@ -471,6 +471,7 @@ public class TileTypes {
 		//for the river tiles
 		if(temp == null){
 			for(int i = 0; i<_riverTileList.size();i++){
+
 				if (_riverTileList.get(i).getId().equals(s)){
 					temp = _riverTileList.remove(i);
 					
@@ -503,5 +504,9 @@ public class TileTypes {
 		
 		
 	}
-	
+	public void create()
+	{
+		createRiverTiles();
+		createTiles();
+	}
 }

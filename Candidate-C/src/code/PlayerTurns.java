@@ -41,7 +41,7 @@ public class PlayerTurns implements Runnable{
 	public PlayerTurns(ArrayList<Player> a){
 		_players = a;
 		_board = new Board(_players);
-		if(a.get(0).get_name().substring(0,4).equals("FAKE"))
+		if(a.size()==12&&a.get(0).get_name().substring(0,4).equals("FAKE"))
 		{
 			LoadFile load = new LoadFile(_board,a.get(0).get_name().substring(4));
 			_players=load.getList();
@@ -75,10 +75,11 @@ public class PlayerTurns implements Runnable{
 				System.out.println(" Player Name: "+ player);
 				i++; //increments the player number
 				_view.updateTurn(player);
-				savePane();
 				
 				//displays the tile which the player can place
 				_view.nextRiverTile();
+
+				savePane();
 				state = 1;
 				break;
 			case 1:
@@ -122,9 +123,9 @@ public class PlayerTurns implements Runnable{
 				String player = _players.get(_p).get_name();
 				i++; //increments the player number
 				_view.updateTurn(player);
-				savePane();
 				//displays the tile which the player can place
 				_view.nextTile();
+				savePane();
 				state = 1;
 				break;
 			case 1:

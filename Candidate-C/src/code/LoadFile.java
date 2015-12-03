@@ -78,9 +78,10 @@ public class LoadFile {
 				}
 				else{
 					score+= ch;
+
+					break;
 				}
 				
-				break;
 			
 		case 4:
 			state = 0;
@@ -109,6 +110,7 @@ public class LoadFile {
 		String id ="";
 		int state = 0;
 		TileTypes file = new TileTypes();
+		file.create();
 		
 		for(int i =0; i< s.length() ;i++) {
 			char ch = s.charAt(i);
@@ -184,9 +186,11 @@ public class LoadFile {
 			}
 			break;
 		case 7:
-			
 			Tile temp= file.getTileById(id);
-			temp.rotate(rot);
+			if(rot!=0)
+			{
+				temp.rotate(rot);			
+			}
 			
 			_board.forcePlaceTile(temp,Integer.parseInt(x),Integer.parseInt(y));
 			Player p = _board.getPlayer(playerName);
