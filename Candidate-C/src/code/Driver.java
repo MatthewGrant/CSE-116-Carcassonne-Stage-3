@@ -21,7 +21,7 @@ public class Driver {
 		if(args.length == 1){
 		
 			// load in Players here
-
+			LoadFile l = new LoadFile();
 			
 			
 			PlayerTurns pt = new PlayerTurns(players);
