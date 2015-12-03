@@ -53,6 +53,7 @@ public class Board {
 	 * Variable of type ArrayList<String> that holds all of the player names
 	 */
 	private ArrayList<String> _players;
+	private ArrayList<Integer> _playersScore;
 	/**
 	 * Variable of type Tile that holds a reference to the tile that was just placed
 	 */
@@ -70,7 +71,10 @@ public class Board {
 		_board = new Tile[144][144];
 		
 		_players = players;
-		
+		_playersScore = new ArrayList<Integer>();
+		for(int i =0 ;i < _players.size();i++){
+			_playersScore.add(0);
+		}
 		//this creates and places the pre-determined "starting tile" of type River 
 		String[] side1 = new String[] {"field", "field","field"};
 		String[] side2 = new String[] {"field", "field","field"};
@@ -96,6 +100,7 @@ public class Board {
 			_meeple.put(_players.get(i), 7);
 		}
 	}
+	
 	/**
 	 * Gives the board a reference to a View object.
 	 * 
@@ -358,5 +363,12 @@ public class Board {
 	 */
 	public Tile[][] get_board() {
 		return _board;
+	}
+	
+	/**
+	 * @return get the player sore we need for save file
+	 */
+	public ArrayList<Integer> get_playersScore() {
+		return _playersScore;
 	}
 }

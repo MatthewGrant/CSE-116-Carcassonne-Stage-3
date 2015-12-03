@@ -1,5 +1,6 @@
 package code;
 
+import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
@@ -19,10 +20,10 @@ public class SaveFile {
 			{
 				out = new BufferedWriter(new FileWriter("SaveFile.csn"));
 				
-				//line1 [player,color,score]
+				//line1 [player,color,score] all done don't touch matt or dan
 				for(int i =0;i<_board.getPlayers().size();i++)
 				{
-					out.write(_board.getPlayers().get(i));
+					out.write("["+_board.getPlayers().get(i) +","+ getColor(i) +","+ _board.get_playersScore().get(i)+"]");
 					if(i<_board.getPlayers().size()-1)
 					{
 						out.write(",");
@@ -31,12 +32,12 @@ public class SaveFile {
 				out.newLine();
 				
 				//line2 Tiles that have been placed, rotation, location and meeple placement  RD1(1,0)[Amy,12]
-				Tile[][] tiles =_board.get_board();//need a two d array of tiles so that we can get the tiles on the board
+				Tile[][] tiles =_board.get_board();
 				for(int i = 0; i<tiles.length;i++){
 					for (int j = 0; j<tiles[i].length;j++){
 						if(tiles[i][j]!= null){
 							out.write(tiles[i][j].getId()+tiles[i][j].getRotationIndex()+"("+i+","+j+")");
-							if (tiles[i][j].get_followerSpot()!=13)//need a get follower thing to get the follwers on the tiles
+							if (tiles[i][j].get_followerSpot()!=13)
 							{
 								out.write(tiles[i][j].get_followerSpot());
 							}
@@ -68,6 +69,25 @@ public class SaveFile {
 				e.printStackTrace();
 			}
 		}
+	}
+	public Color getColor(int p) {
+		 
+				if(p == 0){
+					return Color.BLUE;
+				}
+				if (p == 1){
+					return Color.RED;
+				}
+				if (p == 2){
+					return Color.green;
+				}
+				if (p == 3) {
+					return Color.YELLOW;
+				}
+				else  {
+					return Color.BLACK;
+				}
+				
 	}
 
 }

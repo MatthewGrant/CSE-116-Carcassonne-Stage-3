@@ -158,4 +158,8 @@ public class PlayerTurns implements Runnable{
 		// 3 players, 0,1,2
 		return _p;
 	}
+	
+	public String get_name(int i){
+		return _players.get(i);
+	}
 }
