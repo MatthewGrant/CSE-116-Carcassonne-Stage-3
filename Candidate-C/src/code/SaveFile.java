@@ -53,6 +53,12 @@ public class SaveFile {
 				out.newLine();
 				out.close();
 				
+				for(Tile t :_board.getTileStack().getRiverTileList())
+				{
+					out.write(t.getId()+t.getRotationIndex()+",");
+				}
+				out.newLine();
+				out.close();
 				
 			}
 			catch(Exception e)
