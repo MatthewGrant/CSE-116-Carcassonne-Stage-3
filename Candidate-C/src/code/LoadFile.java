@@ -96,8 +96,8 @@ public class LoadFile {
 	}
 	
 	public void readLine2(String s){
-		ArrayList<Tile> tiles = new ArrayList<Tile>();
-		ArrayList<Point> p = new ArrayList<Point>();
+		//ArrayList<Tile> tiles = new ArrayList<Tile>();
+		//ArrayList<Point> p = new ArrayList<Point>();
 		String x ="";
 		String y ="";
 		int rot = 0;
@@ -187,18 +187,55 @@ public class LoadFile {
 			
 			_board.forcePlaceTile(temp,Integer.parseInt(x),Integer.parseInt(y));
 			Player p = _board.getPlayer(playerName);
-			temp.
+			temp.setFollowerSpot(Integer.parseInt(locFollower), p);
+			rot =0;
+			id ="";
+			x= "";
+			y="";
+			playerName ="";
+			locFollower ="";
+			
 			
 			break;
 		}
 			
 		
+		}	
+		
+	}
+	public void readLine3(String s){
+		int state =0;
+		String id ="";
+		ArrayList<Tile> tiles = new ArrayList<Tile>();
+		TileTypes t = new TileTypes();
+		
+		for(int i =0; i< s.length() ;i++) {
+			char ch = s.charAt(i);
+			
+			switch(state) {
+			case 0:
+				if(ch != '0'){
+					state = 1;
+					
+				}
+				else{
+					id+=ch;
+				}
+			
+				break;
+			case 1:
+				if(ch == ','){
+					state = 2;	
+				}
+				
+				break;
+			case 2:
+				state = 0;
+				tiles.add(t.getTileById(id));
+				id = "";
+				
+			}
 		}
-		
-		
-		
-		
-		
 		
 	}
 	
