@@ -131,7 +131,7 @@ public class PlayerTurns implements Runnable{
 				//asks user if they want to place a follower on the board
 				//'yes' --> the state changes so follower code can run
 				//'no' --> returns to case 0 for next turn
-				if(_board.getPlayers().get(_p).getNumMeeples() > 0){
+				if(_board.getHash(_players.get(_p)) > 0){
 					if (JOptionPane.showConfirmDialog(null, "Would you like to place a follower?") == 0){
 						state = 3;
 					} else {

@@ -153,11 +153,6 @@ public class Board {
 		return false;
 	}
 	
-	public boolean forcePlaceTile(Tile t, int x, int y) {
-		
-	}
-		
-		
 	/**
 	 * This method looks to see if there is at least one tile on one of the four sides of (x,y). It is used inside of the placeTile method.
 	 * 

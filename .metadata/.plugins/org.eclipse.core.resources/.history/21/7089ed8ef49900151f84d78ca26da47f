@@ -48,7 +48,7 @@ public class Board {
 	/**
 	 * Variable of type HashMap<String, Integer> in which the keys are the player's names and the values are the number of followers they have
 	 */
-	private HashMap<Player, Integer> _meeple;
+	private HashMap<String, Integer> _meeple;
 	/**
 	 * Variable of type ArrayList<String> that holds all of the player names
 	 */
@@ -95,7 +95,7 @@ public class Board {
 		_tileTypes = new TileTypes();
 		_tileTypes.createTiles();
 		_tileTypes.createRiverTiles();
-		_meeple = new HashMap<Player, Integer>();
+		_meeple = new HashMap<String, Integer>();
 		for(int i=0; i<_players.size(); i++) {
 			_meeple.put(_players.get(i), 7);
 		}
@@ -153,11 +153,6 @@ public class Board {
 		return false;
 	}
 	
-	public boolean forcePlaceTile(Tile t, int x, int y) {
-		
-	}
-		
-		
 	/**
 	 * This method looks to see if there is at least one tile on one of the four sides of (x,y). It is used inside of the placeTile method.
 	 * 
@@ -317,7 +312,6 @@ public class Board {
 		if(number > 0){
 			number = number -1;
 			_meeple.put(_players.get(i), number);
-			_players.get(i).setNumMeeples(_players.get(i).getNumMeeples()-1);
 			return number;
 		}
 		return 0;
@@ -340,15 +334,6 @@ public class Board {
 	 */
 	public ArrayList<Player> getPlayers(){
 		return _players;
-	}
-	
-	public ArrayList<String> getPlayerNames(){
-		ArrayList<String> playerNames = new ArrayList<String>();
-		for (int i = 0; i < _players.size(); i++ ){
-			String player = _players.get(i).get_name();
-			playerNames.add(player);
-		}
-		return playerNames;
 	}
 	
 	/**

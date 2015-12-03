@@ -90,5 +90,4 @@ public class Player {
 	    this._numMeeples = numMeeples;
 	  }
 
-
 }

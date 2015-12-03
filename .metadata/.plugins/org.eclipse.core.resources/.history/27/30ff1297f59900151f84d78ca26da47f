@@ -153,11 +153,6 @@ public class Board {
 		return false;
 	}
 	
-	public boolean forcePlaceTile(Tile t, int x, int y) {
-		
-	}
-		
-		
 	/**
 	 * This method looks to see if there is at least one tile on one of the four sides of (x,y). It is used inside of the placeTile method.
 	 * 
@@ -340,15 +335,6 @@ public class Board {
 	 */
 	public ArrayList<Player> getPlayers(){
 		return _players;
-	}
-	
-	public ArrayList<String> getPlayerNames(){
-		ArrayList<String> playerNames = new ArrayList<String>();
-		for (int i = 0; i < _players.size(); i++ ){
-			String player = _players.get(i).get_name();
-			playerNames.add(player);
-		}
-		return playerNames;
 	}
 	
 	/**

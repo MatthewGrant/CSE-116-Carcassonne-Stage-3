@@ -155,7 +155,7 @@ public class View {
 		_turn.add(_score, BorderLayout.EAST);
 		_player = new JLabel();
 		_turn.add(_player, BorderLayout.NORTH);
-		ArrayList<String> playerList = _board.getPlayerNames();
+		ArrayList<String> playerList = _board.getPlayers();
 		_players = new JPanel();
 		GridLayout grid = new GridLayout(1, playerList.size());
 		grid.setHgap(10);

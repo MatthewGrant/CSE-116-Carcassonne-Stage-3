@@ -7,9 +7,6 @@ public class Player {
 	private String _name;
 	private Color _color;
 	private int _score;
-	private int _numMeeples;
-	private static final int MAXMEEPLES = 7;
-
 	
 	public Player(String name, Color c){
 		// player class to hold the name color and  the score
@@ -17,7 +14,7 @@ public class Player {
 		_name = name;
 		_color = c;
 		_score = 0;
-		this._numMeeples = MAXMEEPLES;
+		
 		
 		
 	}
@@ -32,7 +29,7 @@ public class Player {
 		_name = name;
 		
 		_score = 0;
-		this._numMeeples = MAXMEEPLES;
+		
 	}
 	//geter for the class
 
@@ -72,23 +69,6 @@ public class Player {
 	public void set_color(Color _color) {
 		this._color = _color;
 	}
-
-	  /**
-	   * get numMeeples.
-	   * @return numMeeples
-	   */
-	  public int getNumMeeples() {
-	    return _numMeeples;
-	  }
-	  	 
-
-	  /**
-	   * set numMeeples.
-	   * @param numMeeples what to set numMeeples to.
-	   */
-	  public void setNumMeeples(int numMeeples) {
-	    this._numMeeples = numMeeples;
-	  }
-
+	
 
 }
