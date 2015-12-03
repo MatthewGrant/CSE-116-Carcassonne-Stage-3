@@ -236,7 +236,7 @@ public class LoadFile {
 				
 			}
 		}
-		
+		_board.getTileStack().set_tileList(tiles);
 	}
 	
 	private Color StringToColor(String s){

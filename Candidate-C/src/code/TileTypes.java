@@ -495,6 +495,13 @@ public class TileTypes {
 	public ArrayList<Tile> getRiverTileList(){
 		return _riverTileList;
 	}
-	
+	/**
+	 * @param a to get the iltes ofr the load file
+	 */
+	public void set_tileList(ArrayList<Tile> a){
+		_tileList =a;
+		
+		
+	}
 	
 }
