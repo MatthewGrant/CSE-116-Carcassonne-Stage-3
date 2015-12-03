@@ -1,5 +1,6 @@
 package code;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class LoadFile {
 		String player ="";
 		String color = "";
 		String score = "";
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<Player> list = new ArrayList<Player>();
 		int state = 0;
 		
 		
@@ -74,6 +75,7 @@ public class LoadFile {
 			
 		case 4:
 			state = 0;
+			Player temp = new Player(player,color);
 			list.add(player);
 			
 			break;
@@ -81,6 +83,28 @@ public class LoadFile {
 		
 		}
 		
+		
+	}
+	private Color StringToColor(String s){
+		if(s.equals("RED")){
+			return Color.RED;
+			
+		}
+		else if(s.equals("BLUE")){
+			return Color.BLUE;
+			
+		}	
+		else if(s.equals("GREEN")){
+			return Color.GREEN;
+			
+		}
+		else if(s.equals("YELLOW")){
+			return Color.YELLOW;
+			
+		}
+		else{
+			return Color.BLACK;
+		}
 		
 	}
 

@@ -23,7 +23,7 @@ public class SaveFile {
 				//line1 [player,color,score] all done don't touch matt or dan
 				for(int i =0;i<_board.getPlayers().size();i++)
 				{
-					out.write("["+_board.getPlayers().get(i) +","+ getColor(i) +","+ _board.get_playersScore().get(i)+"]");
+					out.write("["+_board.getPlayers().get(i) +","+ colorToString(getColor(i)) +","+ _board.get_playersScore().get(i)+"]");
 					if(i<_board.getPlayers().size()-1)
 					{
 						out.write(",");
@@ -91,6 +91,28 @@ public class SaveFile {
 					return Color.BLACK;
 				}
 				
+	}
+	private String colorToString(Color c){
+		if(c==Color.RED){
+			return "RED";
+			
+		}
+		else if(c==Color.BLUE){
+			return "BLUE";
+			
+		}	
+		else if(c==Color.green){
+			return "GREEN";
+			
+		}
+		else if(c==Color.YELLOW){
+			return "YELLOW";
+			
+		}
+		else{
+			return "BLACK";
+		}
+		
 	}
 
 }
