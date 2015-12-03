@@ -324,7 +324,7 @@ public class Board {
 	 * @param i		Takes in an int that represents a follower position on a Tile
 	 */
 	public void followerOnTile(int i){
-		_tile.setFollowerSpot(i);
+		_tile.setFollowerSpot(i,_players.get(PlayerTurns.getPlayerID()));
 	}
 	
 	/**
