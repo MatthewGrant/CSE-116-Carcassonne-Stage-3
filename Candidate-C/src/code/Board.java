@@ -261,6 +261,7 @@ public class Board {
 	}
 	
 
+	
 	/**
 	 * This method compares two int values. The _placements variable is a counter that keeps track of how many times a tile has been placed. The _temp variable stores the 
 	 * value of _placements before a tile is potentially placed. In this method, the value of _temp is assigned to a local variable, _temp is updated to the current value
@@ -350,5 +351,12 @@ public class Board {
 	 */
 	public Tile getTile() {
 		return _tile;
+	}
+	
+	/**
+	 * @return the place on the baord wiar a tile is placed
+	 */
+	public Tile[][] get_board() {
+		return _board;
 	}
 }

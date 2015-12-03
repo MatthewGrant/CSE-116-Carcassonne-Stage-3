@@ -18,6 +18,7 @@ public class SaveFile {
 			try
 			{
 				out = new BufferedWriter(new FileWriter("SaveFile.csn"));
+				
 				//line1 [player,color,score]
 				for(int i =0;i<_board.getPlayers().size();i++)
 				{
@@ -30,14 +31,14 @@ public class SaveFile {
 				out.newLine();
 				
 				//line2 Tiles that have been placed, rotation, location and meeple placement  RD1(1,0)[Amy,12]
-				Tile[][] tiles =_board.getTile();//need a two d array of tiles so that we can get the tiles on the board
-				for(int i = 0; i<tiles.length,i++){
+				Tile[][] tiles =_board.get_board();//need a two d array of tiles so that we can get the tiles on the board
+				for(int i = 0; i<tiles.length;i++){
 					for (int j = 0; j<tiles[i].length;j++){
 						if(tiles[i][j]!= null){
 							out.write(tiles[i][j].getId()+tiles[i][j].getRotationIndex()+"("+i+","+j+")");
-							if (tiles[i][j].get_follower())//neeed a get follower thing to get the follwers
+							if (tiles[i][j].get_followerSpot()!=13)//need a get follower thing to get the follwers on the tiles
 							{
-								out.write(tiles[i][j].get_followers().tostring());
+								out.write(tiles[i][j].get_followerSpot());
 							}
 						}
 					}
@@ -46,13 +47,14 @@ public class SaveFile {
 				
 				
 				//line3 list of tiles left in the "deck" RA,F,D,E,X,.. 
+				//for the normal tile deck
 				for(Tile t :_board.getTileStack().getTileList())
 				{
 					out.write(t.getId()+t.getRotationIndex()+",");
 				}
 				out.newLine();
 				out.close();
-				
+				//for the river tile deck
 				for(Tile t :_board.getTileStack().getRiverTileList())
 				{
 					out.write(t.getId()+t.getRotationIndex()+",");
