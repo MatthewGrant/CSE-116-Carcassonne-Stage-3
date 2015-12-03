@@ -75,6 +75,7 @@ public class PlayerTurns implements Runnable{
 				System.out.println(" Player Name: "+ player);
 				i++; //increments the player number
 				_view.updateTurn(player);
+				savePane();
 				
 				//displays the tile which the player can place
 				_view.nextRiverTile();
@@ -121,7 +122,7 @@ public class PlayerTurns implements Runnable{
 				String player = _players.get(_p).get_name();
 				i++; //increments the player number
 				_view.updateTurn(player);
-				
+				savePane();
 				//displays the tile which the player can place
 				_view.nextTile();
 				state = 1;
