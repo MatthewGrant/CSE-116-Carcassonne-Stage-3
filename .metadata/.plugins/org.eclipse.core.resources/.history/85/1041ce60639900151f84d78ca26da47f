@@ -1,7 +1,6 @@
 package code;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 /**
@@ -20,10 +19,10 @@ public class Tile {
 	/**
 	 * The four arrays of three strings that represent the sides
 	 */
-	private String[] _side1; //0,1,2
-	private String[] _side2; //3,4,5
-	private String[] _side3; //8,7,6
-	private String[] _side4; //11,10,9
+	private String[] _side1;
+	private String[] _side2;
+	private String[] _side3;
+	private String[] _side4;
 	
 	/**
 	 *  holds the feature location if that particular feature is occupied [0,1,2]
@@ -227,8 +226,8 @@ public class Tile {
 	
 	
 	/**
-	 * @param i Feature location on tile (0-->12)  
-	 * @return	Return true is feature is occupied (in the OccupiedFeatures Array)
+	 * @param i Feature location (0-->12)  
+	 * @return	Reutrn true is feature is in the OccupiedFeatures Array
 	 */
 	public boolean getOccupiedFeatures(int i) {
 		return _occupiedFeatures.contains(i);
@@ -236,7 +235,7 @@ public class Tile {
 
 
 	/**
-	 * @param i  add feature at location i to OccupiedFeatures array 
+	 * @param i  add feature at i to  OccupiedFeatures array 
 	 */
 	public void setOccupiedFeatures(int i) {
 		this._occupiedFeatures.add(i);
@@ -248,16 +247,20 @@ public class Tile {
 	}
 	
 	
+	public int getXloc() {
+		return _xloc;
+	}
+
+
 	public void setXloc(int x) {
 		this._xloc = x;
 	}
 
 
-	public  int[] getCoordinates(){
-		int[] coords = {this._xloc,this._yloc};
-		return coords;
+	public int getYloc() {
+		return _yloc;
 	}
-	
+
 
 	/**
 	 * @param y Set y location of tile once placed on board
@@ -279,37 +282,8 @@ public class Tile {
 		return _id;
 	}
 
-	/**
-	 * @return Returns the feature at a specific location on the tile 
-	 */
-	public String getFeature(int i){
-		if (0 <= i && i < 3){
-			return _sides[0][i];
-		}
-		else if ( 3 <= i && i < 6){
-			return _sides[1][i%3];
-		}
-		else if ( 3<= i && i < 6){
-			return _sides[2][i%3];
-		}
-		else{
-			return _sides[3][i%3];
-		}
-	}
+
 	
-	
-	/**
-	 * @return Returns an arrayList of all features on tile ["field","field","field","field","Road",...]
-	 */
-	public ArrayList<String> getAllFeatures(String[][] sides){
-		 List<String> list = new ArrayList<String>();
-		 for (int i = 0; i < sides.length; i++) {
-			 for (int j = 0; j < sides[i].length; j++) { 
-		           list.add(sides[i][j]); 
-		        }
-		    }
-		 return (ArrayList<String>) list;
-	}
 	
 	
 }
