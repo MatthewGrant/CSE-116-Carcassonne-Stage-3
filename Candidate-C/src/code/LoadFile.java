@@ -1,6 +1,7 @@
 package code;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -16,6 +17,11 @@ public class LoadFile {
 		try{
 			BufferedReader reader = new BufferedReader(new FileReader(url));
 			String line = reader.readLine();
+			readLine1(line);
+			line = reader.readLine();
+			readLine2(line);
+			line = reader.readLine();
+			readLine3(line);
 			
 		}
 		catch(Exception e){
@@ -31,7 +37,7 @@ public class LoadFile {
 		ArrayList<Player> list = new ArrayList<Player>();
 		int state = 0;
 		
-		
+		//this was line one
 		for(int i =0; i<s.length() ;i++) {
 			char ch = s.charAt(i);
 			
@@ -78,7 +84,9 @@ public class LoadFile {
 			Player temp = new Player(player,StringToColor(color));
 			temp.set_score(Integer.parseInt(score));
 			list.add(temp);
-			
+			score = "";
+			player ="";
+			color ="";
 			break;
 		}
 		
@@ -86,6 +94,110 @@ public class LoadFile {
 		
 		
 	}
+	
+	public void readLine2(String s){
+		ArrayList<Tile> tiles = new ArrayList<Tile>();
+		ArrayList<Point> p = new ArrayList<Point>();
+		String x ="";
+		String y ="";
+		int rot = 0;
+		String playerName ="";
+		String locFollower ="";
+		String id ="";
+		int state = 0;
+		TileTypes file = new TileTypes();
+		
+		for(int i =0; i< s.length() ;i++) {
+			char ch = s.charAt(i);
+			
+			switch(state) {
+			case 0:
+				if(Character.isDigit(ch)){
+					state = 1;
+					rot = Integer.parseInt(""+ch);
+				}
+				else{
+					id+=ch;
+				}
+			
+				break;
+			case 1:
+				if(ch == '('){
+					state = 2;
+					
+				}
+				break;
+			case 2:
+				if(ch ==','){
+					state = 3;
+					
+				}
+				else{
+					x+= ch;
+				}
+			
+					break;
+			case 3:
+				if(ch ==')'){
+					state =4;
+				
+				}
+				else{
+					y+= ch;
+				}
+				
+				break;
+			
+		case 4:
+			if(s.charAt(i+1)== '['){
+				state =5;
+				i++;
+				
+				
+			}
+			else{
+				state = 7;
+				
+			}
+			break;
+		case 5:
+			if(ch== ','){
+				state =6;
+				
+			}
+			else{
+				playerName+=ch;
+				
+			}
+			break;
+		case 6:
+			if(ch== ']'){
+				state =7;
+				
+			}
+			else{
+				locFollower += ch;
+				
+			}
+			break;
+		case 7:
+			
+			Tile temp= file.getTileById(id);
+			temp.rotate(rot);
+			
+			break;
+		}
+			
+		
+		}
+		
+		
+		
+		
+		
+		
+	}
+	
 	private Color StringToColor(String s){
 		if(s.equals("RED")){
 			return Color.RED;

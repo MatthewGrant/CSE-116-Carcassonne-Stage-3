@@ -459,6 +459,30 @@ public class TileTypes {
 			
 	}
 	
+	public Tile getTileById(String s){
+		Tile temp = null;
+		//for the noraml tiles
+		for(int i = 0; i<_tileList.size();i++){
+			if (_tileList.get(i).getId().equals(s)){
+				temp = _tileList.remove(i);
+				
+			}
+		}
+		//for the river tiles
+		if(temp == null){
+			for(int i = 0; i<_riverTileList.size();i++){
+				if (_riverTileList.get(i).getId().equals(s)){
+					temp = _riverTileList.remove(i);
+					
+				}
+			}
+			
+		}
+		return temp;
+		
+		
+	}
+	
 	/**
 	 * getTileList() is an accessor method which is used to return the _tileList for use in other classes
 	 * 
