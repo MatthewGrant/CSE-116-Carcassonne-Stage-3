@@ -17,8 +17,6 @@ public class Tile {
 	 */
 	private int _followerSpot;
 	
-	
-	
 	/**
 	 * The four arrays of three strings that represent the sides
 	 */
@@ -81,9 +79,6 @@ public class Tile {
 	 * The image of the tile
 	 */
 	private ImageIcon _image; 
-	
-	
-	private String _followerName;//geting the name of the player that owns the meepe
 	
 	/**
 	 * The constructor initializes all of the instance variables to values that are specified when a tile is created
@@ -216,83 +211,35 @@ public class Tile {
 		return _followerSpot;
 	}
 	
-	public int getFollowerSpot() {
+	public int get_followerSpot() {
 		return _followerSpot;
 	}
 
 
-	public void setFollowerSpot(int _followerSpot, String s) {
-		_followerName =s;
+	public void setFollowerSpot(int _followerSpot) {
 		this._followerSpot = _followerSpot;
 	}
 
 
-	/**
-	 * @return ArrayList of features that are occupied by a follower on the tile
-	 */
 	public ArrayList<Integer> getOccupiedFeatures() {
 		return _occupiedFeatures;
 	}
 	
+	
 	/**
-	 * @param i feature location on tile (0-->12)  
-	 * @return	Return true is feature is occupied by a Follower (in the OccupiedFeatures Array)
+	 * @param i Feature location on tile (0-->12)  
+	 * @return	Return true is feature is occupied (in the OccupiedFeatures Array)
 	 */
-	public boolean isFeatureOccupied(int i) {
+	public boolean getOccupiedFeatures(int i) {
 		return _occupiedFeatures.contains(i);
 	}
 
-	public void distributeOccupiedFeatures(int i){
-		// how to do this?? 
-		// Find feature "string" associated with the location i 
-		// 
-	}
 
 	/**
-	 * @param i  Adds a feature at location i on tile to OccupiedFeatures array 
+	 * @param i  add feature at location i to OccupiedFeatures array 
 	 */
 	public void setOccupiedFeatures(int i) {
 		this._occupiedFeatures.add(i);
-	}
-
-	/**
-	 * @return Returns the feature String at a specific location on the tile 
-	 */
-	public String getFeature(int i){
-		if (0 <= i && i < 3){
-			//side 1
-			System.out.print(_sides[0][i]);
-			return _sides[0][i];
-		}
-		else if (3 <= i && i < 6){
-			// side 2
-			return _sides[1][i%3];
-		}
-		else if (6<= i && i < 9){
-			//side 3
-			return _sides[2][i%3];
-		}
-		else if (9<= i && i < 12){
-			//side 4
-			return _sides[3][i%3];
-		}
-		else {
-			return _inside;
-		}
-	}
-	
-	
-	/**
-	 * @return Returns an arrayList<Strings> of all features on tile ["field","field","field","field","Road",...]
-	 */
-	public ArrayList<String> getAllFeatures(String[][] sides){
-		 List<String> list = new ArrayList<String>();
-		 for (int i = 0; i < sides.length; i++) {
-			 for (int j = 0; j < sides[i].length; j++) { 
-		           list.add(sides[i][j]); 
-		        }
-		    }
-		 return (ArrayList<String>) list;
 	}
 
 
@@ -306,9 +253,6 @@ public class Tile {
 	}
 
 
-	/**
-	 * @return returns array of the tile's coordinates on the board 
-	 */
 	public  int[] getCoordinates(){
 		int[] coords = {this._xloc,this._yloc};
 		return coords;
@@ -335,12 +279,45 @@ public class Tile {
 		return _id;
 	}
 
-
 	/**
-	 * @return gets the name of the player that owns the follower
+	 * @return Returns the feature at a specific location on the tile 
 	 */
-	public String get_followerName() {
-		return _followerName;
+	public String getFeature(int i){
+		if (0 <= i && i < 3){
+			//side 1
+			return _sides[0][i];
+		}
+		else if (3 <= i && i < 6){
+			// side 2
+			return _sides[1][i%3];
+		}
+		else if (6<= i && i < 9){
+			//side 3
+			return _sides[2][i%3];
+		}
+		else if (9<= i && i < 12){
+			//side 4
+			return _sides[3][i%3];
+		}
+		else {
+			return _inside;
+		}
+	
+	
+	}
+	
+	
+	/**
+	 * @return Returns an arrayList of all features on tile ["field","field","field","field","Road",...]
+	 */
+	public ArrayList<String> getAllFeatures(String[][] sides){
+		 List<String> list = new ArrayList<String>();
+		 for (int i = 0; i < sides.length; i++) {
+			 for (int j = 0; j < sides[i].length; j++) { 
+		           list.add(sides[i][j]); 
+		        }
+		    }
+		 return (ArrayList<String>) list;
 	}
 	
 	
