@@ -162,4 +162,15 @@ public class PlayerTurns implements Runnable{
 	public String get_name(int i) {
 		return _players.get(i).get_name();  //get(i).get_name();
 	}
+	public void savePane(){
+		int reply= JOptionPane.showConfirmDialog(null, "Would you like to Save your game? ","Save Pane", JOptionPane.YES_NO_OPTION);
+		if(reply == 0){
+			SaveFile save= new SaveFile(_board);
+			save.saveToFile(1);
+			System.exit(0);
+		}
+		
+			
+		}
+		
 }
