@@ -138,7 +138,7 @@ public class LoadFile {
 					
 				}
 				else{
-					x+= ch;
+					x = x + ch;
 				}
 			
 					break;
@@ -148,7 +148,7 @@ public class LoadFile {
 				
 				}
 				else{
-					y+= ch;
+					y= y + ch;
 				}
 				
 				break;
@@ -192,6 +192,7 @@ public class LoadFile {
 				temp.rotate(rot);			
 			}
 			_board.forcePlaceTile(temp,Integer.parseInt(x),Integer.parseInt(y));
+			System.out.print(x + ',' + y +','+Integer.parseInt(x));
 			Player p = _board.getPlayer(playerName);
 			if(locFollower.equals(""))
 			{
@@ -205,7 +206,7 @@ public class LoadFile {
 			playerName ="";
 			locFollower ="";
 			
-			state = 0;
+			
 			break;
 		}
 			

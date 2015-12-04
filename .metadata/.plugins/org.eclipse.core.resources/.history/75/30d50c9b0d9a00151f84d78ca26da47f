@@ -138,7 +138,7 @@ public class LoadFile {
 					
 				}
 				else{
-					x+= ch;
+					x = x + ch;
 				}
 			
 					break;
@@ -148,7 +148,7 @@ public class LoadFile {
 				
 				}
 				else{
-					y+= ch;
+					y= y + ch;
 				}
 				
 				break;
@@ -205,7 +205,7 @@ public class LoadFile {
 			playerName ="";
 			locFollower ="";
 			
-			state = 0;
+			
 			break;
 		}
 			

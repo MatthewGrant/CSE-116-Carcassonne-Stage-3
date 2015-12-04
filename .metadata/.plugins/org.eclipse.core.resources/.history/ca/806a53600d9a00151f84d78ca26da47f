@@ -205,7 +205,7 @@ public class LoadFile {
 			playerName ="";
 			locFollower ="";
 			
-			state = 0;
+			
 			break;
 		}
 			

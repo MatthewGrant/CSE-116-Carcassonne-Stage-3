@@ -116,6 +116,7 @@ public class LoadFile {
 			char ch = s.charAt(i);
 			
 			switch(state) {
+			
 			case 0:
 				if(Character.isDigit(ch)){
 					state = 1;
@@ -138,7 +139,7 @@ public class LoadFile {
 					
 				}
 				else{
-					x+= ch;
+					x = x + ch;
 				}
 			
 					break;
@@ -148,7 +149,7 @@ public class LoadFile {
 				
 				}
 				else{
-					y+= ch;
+					y= y + ch;
 				}
 				
 				break;
@@ -192,6 +193,7 @@ public class LoadFile {
 				temp.rotate(rot);			
 			}
 			_board.forcePlaceTile(temp,Integer.parseInt(x),Integer.parseInt(y));
+			System.out.print(x + ',' + y);
 			Player p = _board.getPlayer(playerName);
 			if(locFollower.equals(""))
 			{
@@ -205,7 +207,7 @@ public class LoadFile {
 			playerName ="";
 			locFollower ="";
 			
-			state = 0;
+			
 			break;
 		}
 			

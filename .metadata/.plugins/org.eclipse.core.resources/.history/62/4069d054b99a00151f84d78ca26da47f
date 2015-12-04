@@ -116,44 +116,54 @@ public class LoadFile {
 			char ch = s.charAt(i);
 			
 			switch(state) {
+			
 			case 0:
+				System.out.print("state: "+state);
 				if(Character.isDigit(ch)){
 					state = 1;
 					rot = Integer.parseInt(""+ch);
+					System.out.print(state);
 				}
 				else{
 					id+=ch;
+					System.out.print(state);
 				}
 			
 				break;
 			case 1:
+				System.out.print("state: "+state);
 				if(ch == '('){
 					state = 2;
-					
+					System.out.print(state);
 				}
 				break;
 			case 2:
+				System.out.print("state: "+state);
 				if(ch ==','){
 					state = 3;
-					
+					System.out.print(state);
 				}
 				else{
-					x+= ch;
+					x = x + ch;
+					System.out.print(",x: "+ x);
 				}
 			
 					break;
 			case 3:
+				System.out.print("state: "+state);
 				if(ch ==')'){
 					state =4;
-				
+					
 				}
 				else{
-					y+= ch;
+					y= y + ch;
+					System.out.print(",y: "+ y);
 				}
 				
 				break;
 			
 		case 4:
+			System.out.print("state: "+state);
 			if(s.charAt(i+1)== '['){
 				state =5;
 				i++;
@@ -162,13 +172,13 @@ public class LoadFile {
 			}
 			else{
 				state = 7;
-				
+				System.out.print("state: "+state);
 			}
 			break;
 		case 5:
 			if(ch== ','){
 				state =6;
-				
+				System.out.print("state: "+state);
 			}
 			else{
 				playerName+=ch;
@@ -178,7 +188,7 @@ public class LoadFile {
 		case 6:
 			if(ch== ']'){
 				state =7;
-				
+				System.out.print("state: "+state);
 			}
 			else{
 				locFollower += ch;
@@ -186,12 +196,14 @@ public class LoadFile {
 			}
 			break;
 		case 7:
+			System.out.print("state: "+state);
 			Tile temp= file.getTileById(id);
 			if(rot!=0)
 			{
 				temp.rotate(rot);			
 			}
 			_board.forcePlaceTile(temp,Integer.parseInt(x),Integer.parseInt(y));
+			System.out.print( "coordinates" +'('+ x + ',' + y+')');
 			Player p = _board.getPlayer(playerName);
 			if(locFollower.equals(""))
 			{
@@ -200,12 +212,13 @@ public class LoadFile {
 			temp.setFollowerSpot(Integer.parseInt(locFollower), p);
 			rot =0;
 			id ="";
+			System.out.print("ide: "+id);
 			x= "";
 			y="";
 			playerName ="";
 			locFollower ="";
 			
-			state = 0;
+			
 			break;
 		}
 			
